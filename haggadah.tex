@@ -1,0 +1,1430 @@
+% =============== Preamble ====================
+\documentclass[12pt,twoside]{article}
+
+% For XeLaTeX font loading & multilingual support
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\setdefaultlanguage{hebrew}
+\setotherlanguage{english}
+\setotherlanguage{spanish}
+
+% Force explicit LTR/RTL using bidi
+\usepackage{bidi}
+
+% Hebrew font (ensure the font file exists at the specified path)
+\newfontfamily\hebrewfont[
+  Script=Hebrew,
+  Scale=1.2,
+  Path=C:/Users/SasTrakinskyB/Downloads/EzraSIL-2.51/EzraSIL2.51/
+]{SILEOT.ttf}
+
+% Latin font
+\setmainfont{Libre Baskerville}
+
+% Page geometry and styling
+\usepackage[inner=3cm,outer=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\cfoot{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+\usepackage{setspace}
+\setstretch{1.2}
+\usepackage{microtype}
+
+% For side-by-side columns
+\usepackage{paracol}
+
+% For conditionals in the environment
+\usepackage{etoolbox}
+\newbool{firststanza}
+\setbool{firststanza}{true}
+
+% Hebrew macro: force RTL using bidi, no indent, large font
+\newcommand{\HebrewText}[1]{%
+  \selectlanguage{hebrew}%
+  \begin{RTL}%
+    \noindent\Large #1%
+  \end{RTL}%
+}
+
+% English and Spanish content will be stored here:
+\newcommand{\EnglishContent}{} 
+\newcommand{\SpanishContent}{}
+
+% Smart TriLingualStanza environment:
+\newenvironment{TriLingualStanza}{%
+  % Start: Force Hebrew on next odd page
+  \clearpage
+  \ifbool{firststanza}{}{%
+    \cleardoublepage
+  }%
+  \setbool{firststanza}{false}
+}{%
+  % End: Move to next even page for translations
+  \clearpage
+  \setlength{\columnsep}{1.2cm}
+  \begin{paracol}{2}
+    % Left column: English; add \vspace*{0pt} to force top alignment.
+    \begin{leftcolumn}
+      \selectlanguage{english}%
+      \normalsize%
+      \noindent%
+      \vspace*{0pt}%
+      \EnglishContent
+    \end{leftcolumn}
+    \switchcolumn
+    % Right column: Spanish; also force top alignment.
+    \begin{rightcolumn}
+      \selectlanguage{spanish}%
+      \normalsize%
+      \noindent%
+      \vspace*{0pt}%
+      \SpanishContent
+    \end{rightcolumn}
+  \end{paracol}
+  \vspace{2em}%
+}
+
+% =============== Document Start ================
+\title{הגדה של פסח}
+\author{עיצוב לדוגמה}
+\date{}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+\clearpage
+
+% ---------------------------
+% STANZA #1 – Seder Order
+% ---------------------------
+% ---------------------------
+% STANZA #1 – Seder Order
+% ---------------------------
+\renewcommand{\EnglishContent}{%
+\begin{minipage}[t]{\linewidth}
+\textbf{The Order of the Seder}\par\vspace{0.5em}
+1. Kadesh — Sanctification\par
+2. Urchatz — Washing the hands\par
+3. Karpas — Dipping the vegetable\par
+4. Yachatz — Breaking the middle matzah\par
+5. Maggid — Telling the story\par
+6. Rachtzah — Washing the hands again\par
+7. Motzi — Blessing over bread\par
+8. Matzah — Blessing over matzah\par
+9. Maror — Eating the bitter herbs\par
+10. Korech — Hillel sandwich\par
+11. Shulchan Orech — The meal\par
+12. Tzafun — Eating the afikoman\par
+13. Barech — Grace after meals\par
+14. Hallel — Songs of praise\par
+15. Nirtzah — Conclusion
+\end{minipage}
+}
+\renewcommand{\SpanishContent}{%
+\begin{minipage}[t]{\linewidth}
+\textbf{El Orden del Seder}\par\vspace{0.5em}
+1. Kadesh — Santificación\par
+2. Urjatz — Lavado de manos\par
+3. Karpas — Verdura con agua salada\par
+4. Yajatz — Partir la matzá del medio\par
+5. Maguid — Relato del éxodo\par
+6. Rajtzá — Segundo lavado de manos\par
+7. Motzí — Bendición del pan\par
+8. Matzá — Bendición de la matzá\par
+9. Maror — Hierbas amargas\par
+10. Korej — El sándwich de Hilel\par
+11. Shulján Orej — La cena\par
+12. Tzafún — Comer el afikomán\par
+13. Barej — Birkat Hamazón\par
+14. Hallel — Canciones de alabanza\par
+15. Nirtzá — Conclusión del Seder
+\end{minipage}
+}
+
+\begin{TriLingualStanza}
+    \HebrewText{%
+    \begin{minipage}[t]{\linewidth}
+    \textbf{סֵדֶר הַסֵּדֶר}\par\vspace{0.5em}
+    קַדֵּשׁ\par
+    וּרְחַץ\par
+    כַּרְפַּס\par
+    יַחַץ\par
+    מַגִּיד\par
+    רָחְצָה\par
+    מוֹצִיא\par
+    מַצָּה\par
+    מָרוֹר\par
+    כּוֹרֵךְ\par
+    שֻׁלְחָן עוֹרֵךְ\par
+    צָפוּן\par
+    בָּרֵךְ\par
+    הַלֵּל\par
+    נִרְצָה
+    \end{minipage}
+    }
+    \end{TriLingualStanza}
+
+    \renewcommand{\EnglishContent}{%
+    \begin{minipage}[t]{\linewidth}
+    \textbf{Kadesh — Sanctification}\par\vspace{0.5em}
+    On Shabbat, begin with the following:\par
+    "And it was evening and it was morning, the sixth day. The heavens and the earth and all their host were completed. And God finished on the seventh day His work which He had made, and He rested on the seventh day from all His work which He had made. And God blessed the seventh day and sanctified it, because on it He rested from all His work which God created to do."\par\vspace{1em}
+    
+    Blessed are You, Adonai our God, Ruler of the universe, who creates the fruit of the vine.\par\vspace{1em}
+    
+    Blessed are You, Adonai our God, Ruler of the universe, who chose us from all peoples and exalted us from all nations, and sanctified us with commandments. You lovingly gave us, Adonai our God, Sabbaths for rest, festivals for joy, holidays and seasons for gladness — this Festival of Matzot, the season of our freedom, a sacred convocation, a remembrance of the Exodus from Egypt. For You chose us from all peoples and sanctified us with Your commandments. And You gave us, Adonai our God, with love, the festivals for joy and gladness.\par\vspace{1em}
+    
+    Blessed are You, Adonai, who sanctifies Israel and the seasons.
+    \end{minipage}
+    }
+    \renewcommand{\SpanishContent}{%
+    \begin{minipage}[t]{\linewidth}
+    \textbf{Kadesh — Santificación}\par\vspace{0.5em}
+    En Shabat, comenzar con lo siguiente:\par
+    "Y fue la tarde y fue la mañana, el sexto día. Fueron terminados los cielos y la tierra, y todo su ejército. Y finalizó Dios en el séptimo día Su obra que había hecho, y descansó en el séptimo día de toda Su obra que había hecho. Y bendijo Dios el séptimo día y lo santificó, porque en él descansó de toda Su obra que Dios había creado para hacer."\par\vspace{1em}
+    
+    Bendito eres Tú, Adonai nuestro Dios, Rey del universo, que crea el fruto de la vid.\par\vspace{1em}
+    
+    Bendito eres Tú, Adonai nuestro Dios, Rey del universo, que nos escogiste de entre todos los pueblos, nos exaltaste entre todas las naciones y nos santificaste con Tus mandamientos. Nos diste con amor, Adonai nuestro Dios, Shabatot para el descanso, festividades para el gozo, fiestas y estaciones para la alegría — esta Fiesta de las Matzot, tiempo de nuestra libertad, convocación sagrada, recuerdo de la salida de Egipto. Pues Tú nos escogiste entre todos los pueblos y nos santificaste con Tus mandamientos. Y nos diste con amor, Adonai nuestro Dios, festividades para el gozo y la alegría.\par\vspace{1em}
+    
+    Bendito eres Tú, Adonai, que santificas a Israel y las estaciones.
+    \end{minipage}
+    }
+    
+    \begin{TriLingualStanza}
+    \HebrewText{%
+    \begin{minipage}[t]{\linewidth}
+    \textbf{קַדֵּשׁ — קִדּוּשׁ}\par\vspace{0.5em}
+    \textbf{לְכָבוֹד שַׁבָּת (אם חל בליל שבת):}\par
+    וַיְהִי עֶרֶב וַיְהִי בֹקֶר יוֹם הַשִּׁשִּׁי. \par
+    וַיְכֻלּוּ הַשָּׁמַיִם וְהָאָרֶץ וְכָל־צְבָאָם. \par
+    וַיְכַל אֱלֹהִים בַּיּוֹם הַשְּׁבִיעִי מְלַאכְתּוֹ אֲשֶׁר עָשָׂה, וַיִּשְׁבֹּת בַּיּוֹם הַשְּׁבִיעִי מִכָּל־מְלַאכְתּוֹ אֲשֶׁר עָשָׂה. \par
+    וַיְבָרֶךְ אֱלֹהִים אֶת־יוֹם הַשְּׁבִיעִי וַיְקַדֵּשׁ אֹתוֹ, כִּי בוֹ שָׁבַת מִכָּל־מְלַאכְתּוֹ אֲשֶׁר בָּרָא אֱלֹהִים לַעֲשׂוֹת.\par\vspace{1em}
+    
+    בָּרוּךְ אַתָּה יְיָ אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם בּוֹרֵא פְּרִי הַגָּפֶן.\par\vspace{1em}
+    
+    בָּרוּךְ אַתָּה יְיָ אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם אֲשֶׁר בָּחַר בָּנוּ מִכָּל עַם וְרוֹמְמָנוּ מִכָּל לָשׁוֹן וְקִדְּשָׁנוּ בְּמִצְוֹתָיו. וְתִתֵּן לָנוּ יְיָ אֱלֹהֵינוּ בְּאַהֲבָה שַׁבָּתוֹת לִמְנוּחָה וּמוֹעֲדִים לְשִׂמְחָה, חַגִּים וּזְמַנִּים לְשָׂשׂוֹן — אֵת יוֹם חַג הַמַּצּוֹת הַזֶּה, זְמַן חֵרוּתֵנוּ, מִקְרָא קֹדֶשׁ, זֵכֶר לִיצִיאַת מִצְרָיִם.\par
+    
+    כִּי בָנוּ בָחַרְתָּ וְאוֹתָנוּ קִדַּשְׁתָּ מִכָּל הָעַמִּים, וּמוֹעֲדֵי קָדְשְׁךָ בְּשִׂמְחָה וּבְשָׂשׂוֹן הִנְחַלְתָּנוּ.\par\vspace{1em}
+    
+    בָּרוּךְ אַתָּה יְיָ מְקַדֵּשׁ יִשְׂרָאֵל וְהַזְּמַנִּים.
+    \end{minipage}
+    }
+    \end{TriLingualStanza}
+
+    \renewcommand{\EnglishContent}{%
+    \begin{minipage}[t]{\linewidth}
+    \textbf{Motza'ei Shabbat Addition to Kadesh — Yom Tov Havdalah}\par\vspace{0.5em}
+    When the Seder falls on Motza'ei Shabbat (Saturday night), recite the following Havdalah blessings before the blessing of “who has granted us life”:\par
+    1. Blessed are You, Adonai our God, Ruler of the universe, who creates the lights of fire.\par
+    2. Blessed are You, Adonai our God, Ruler of the universe, who separates between sacred and profane, between light and darkness, between Israel and the nations, between the seventh day and the six days of work; and between the holiness of the Sabbath and the holiness of the Festival. You have separated and sanctified Your people Israel with Your holiness.\par
+    3. Blessed are You, Adonai, who separates between levels of holiness.\par
+    4. Blessed are You, Adonai our God, Ruler of the universe, who has granted us life, sustained us, and brought us to this season.
+    \end{minipage}
+    }
+    
+    \renewcommand{\SpanishContent}{%
+    \begin{minipage}[t]{\linewidth}
+    \textbf{Adición del Motzéi Shabat al Kadesh — Havdalá de Yom Tov}\par\vspace{0.5em}
+    Cuando el Seder cae en Motzéi Shabat (sábado por la noche), recita las siguientes bendiciones de Havdalá antes de la bendición de "quien nos ha dado la vida":\par
+    1. Bendito eres Tú, Adonai nuestro Dios, Rey del universo, que crea las luminarias del fuego.\par
+    2. Bendito eres Tú, Adonai nuestro Dios, Rey del universo, que separa entre lo sagrado y lo profano, entre la luz y la oscuridad, entre Israel y las naciones, entre el séptimo día y los seis días de trabajo; y entre la santidad del Shabat y la santidad de la festividad. Tú has separado y santificado a Tu pueblo Israel con Tu santidad.\par
+    3. Bendito eres Tú, Adonai, que separas entre niveles de santidad.\par
+    4. Bendito eres Tú, Adonai nuestro Dios, Rey del universo, que nos ha dado la vida, nos ha sustentado y nos ha permitido llegar a esta temporada.
+    \end{minipage}
+    }
+    
+    \begin{TriLingualStanza}
+    \HebrewText{%
+    \begin{minipage}[t]{\linewidth}
+    \textbf{הַבְדָּלָה לְיוֹם טוֹב שֶׁחָל בְּמוֹצָאֵי שַׁבָּת}\par\vspace{0.5em}
+    1. בָּרוּךְ אַתָּה יְיָ אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם בּוֹרֵא מְאוֹרֵי הָאֵשׁ.\par\vspace{0.5em}
+    2. בָּרוּךְ אַתָּה יְיָ אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם \\
+    הַמַּבְדִּיל בֵּין קֹדֶשׁ לְחוֹל, בֵּין אוֹר לְחֹשֶׁךְ, בֵּין יִשְׂרָאֵל לָעַמִּים, בֵּין יוֹם הַשְּׁבִיעִי לִשֵׁשֶׁת יְמֵי הַמַּעֲשֶׂה, וּבֵין קִדְּשׁוֹ שַׁבָּת וּקִדְּשׁוֹ חַג. \par
+    אַתָּה הִבְדַלְתָּ וְהִקְדַּשְׁתָּ אֶת עַמֶּךָ יִשְׂרָאֵל בִּקְדֻשָּׁתֶךָ.\par\vspace{0.5em}
+    3. בָּרוּךְ אַתָּה יְיָ הַמַּבְדִּיל בֵּין קֹדֶשׁ לְקֹדֶשׁ.\par\vspace{0.5em}
+    4. בָּרוּךְ אַתָּה יְיָ אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם שֶׁהֶחֱיָנוּ וְקִיְּמָנוּ וְהִגִּיעָנוּ לַזְּמַן הַזֶּה.
+    \end{minipage}
+    }
+    \end{TriLingualStanza}
+     
+
+\renewcommand{\EnglishContent}{%
+\begin{minipage}[t]{\linewidth}
+\textbf{Urchatz — Washing of the Hands (before Karpas)}\par
+Ritually wash the hands without reciting a blessing.\par\vspace{1em}
+
+\textbf{Karpas — Vegetable}\par
+Take a small piece of the karpas (green vegetable, e.g., parsley), dip it into salt water (or vinegar), and recite the following blessing:\par
+Blessed are You, Adonai, our God, King of the universe, Creator of the fruit of the earth.\par
+(When reciting this blessing, have in mind that it will also cover the bitter herbs of Maror and Korech to be eaten later.)\par\vspace{1em}
+
+\textbf{Yachatz — Breaking the Middle Matzah}\par
+Take the middle matzah of the three, and break it into two pieces, one larger and one smaller. Set aside the larger piece as the Afikoman (to be eaten at the end of the meal). Return the smaller piece to its place between the two whole matzot. (This completes “Yachatz” – the dividing of the matzah.)
+\end{minipage}
+}
+
+\renewcommand{\SpanishContent}{%
+\begin{minipage}[t]{\linewidth}
+\textbf{Urjatz — Lavado de las manos}\par
+Lavar ritualmente las manos sin recitar la bendición.\par\vspace{1em}
+
+\textbf{Karpás — Verdura}\par
+Toma menos de un kezayit (volumen de una aceituna) de karpás (vegetal verde, p. ej. perejil), mójalo en agua salada (o vinagre), y recita la siguiente bendición:\par
+Bendito eres Tú, Adonai, nuestro Dios, Rey del universo, que crea el fruto de la tierra.\par
+(Al recitar esta bendición, ten en mente que también incluye las hierbas amargas del Maror y el Korej que se comerán más adelante.)\par\vspace{1em}
+
+\textbf{Iajatz — División de la Matzá del medio}\par
+Toma la matzá del medio de las tres y pártela en dos, una porción más grande y otra más pequeña. Aparta la porción más grande para el Afikomán (que se comerá al final de la cena). Vuelve a colocar la porción más pequeña en su lugar, entre las otras dos matzot enteras. (Así se cumple “Iajatz” – la división de la matzá del medio.)
+\end{minipage}
+}
+
+\begin{TriLingualStanza}
+\HebrewText{%
+\begin{minipage}[t]{\linewidth}
+\textbf{וּרְחַץ — רחיצת ידיים}\par
+נוטלים את הידיים (רוחצים את הידיים) בְּלֹא אמירת ברכה.\par\vspace{1em}
+
+\textbf{כַּרְפַּס — ברכת הכרפס}\par
+טוֹלְלִים כַּרְפַּס בְּמֵי מֶלַח אוֹ בְּחֹמֶץ, וּמְבָרְכִים:\par
+בָּרוּךְ אַתָּה, יְיָ אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם, בּוֹרֵא פְּרִי הָאֲדָמָה.\par
+(באמירת ברכה זו יש לכוון שהיא גם על אכילת המרור והכורך שייאכלו בהמשך.)\par\vspace{1em}
+
+\textbf{יַחַץ — חלוקת המצה}\par
+לוקחים את המצה האמצעית משלוש המצות, ובוצעים אותה לשניים – חלק אחד גדול וחלק אחד קטן. את החצי הגדול שמים בצד לאַפִיקוֹמָן, ואת החצי הקטן מחזירים בין שתי המצות השלמות. (זהו “יַחַץ” – חלוקת המצה.)
+\end{minipage}
+}
+\end{TriLingualStanza}
+
+\renewcommand{\EnglishContent}{%
+\begin{minipage}[t]{\linewidth}
+\textbf{Maggid – Telling the Story}\par\vspace{0.5em}
+(During the recital of this paragraph, the Seder plate is held up and the middle matzah is displayed to the company.)\par
+“This is the bread of affliction that our ancestors ate in the land of Egypt. Let all who are hungry come and eat; let all who are in need come and celebrate the Passover. Now we are here — next year may we be in the land of Israel. Now we are slaves — next year may we be free people.”\par
+(Place the plate aside. Pour the second cup of wine, but do not drink it yet.)
+\end{minipage}
+}
+
+\renewcommand{\SpanishContent}{%
+\begin{minipage}[t]{\linewidth}
+\textbf{Maguid – Narración de la Historia}\par\vspace{0.5em}
+(Durante la recitación de este párrafo, se levanta el plato del Seder y se muestra la matzá del medio a los presentes.)\par
+“Este es el pan de aflicción que nuestros antepasados comieron en la tierra de Egipto. Que todo el que tenga hambre venga y coma; que todo el que necesite venga y celebre el Pésaj. Ahora estamos aquí — el próximo año, en la tierra de Israel. Ahora somos esclavos — el próximo año, libres.”\par
+(Deja el plato a un lado. Se vierte la segunda copa de vino, pero aún no se bebe.)
+\end{minipage}
+}
+
+\begin{TriLingualStanza}
+\HebrewText{%
+\begin{minipage}[t]{\linewidth}
+\textbf{מַגִּיד – סיפור יציאת מצרים}\par\vspace{0.5em}
+(בְּעֵת קְרִיאַת פָּרָשָׁה זוֹ מַגְבִּיהִים אֶת קְעָרַת הַסֵּדֶר וּמַרְאִים לַנּוֹכְחִים אֶת הַמַּצָּה הָאֶמְצָעִית.)\par 
+הָא לַחְמָא עַנְיָא די אכלו אבחתנא בארעא דמצרים.\par
+כָּל דִּכְפִין יֵיתֵי וְיֵיכוֹל; כָּל דְּצָרִיךְ יֵיתֵי וְיִפְסַח.\par
+הַשָּׁתָא הָכָא – לְשָׁנָה הַבָּאָה בְּאַרְעָא דְיִשְׂרָאֵל.\par
+הַשָּׁתָא עַבְדֵּי – לְשָׁנָה הַבָּאָה בְּנֵי חוֹרִין.\par
+(מניחים את הקערה. מוזגים עכשיו את הכוס השנייה של יין, אך עדיין אין שותים.)
+\end{minipage}
+}
+\end{TriLingualStanza}
+
+\renewcommand{\EnglishContent}{%
+\begin{minipage}[t]{\linewidth}
+\textbf{The Four Questions}\par\vspace{0.5em}
+The youngest child asks:\par
+Why is this night different from all other nights?\par
+1. On all other nights we eat leavened or unleavened bread; tonight, only unleavened bread!\par
+2. On all other nights we eat all kinds of vegetables; tonight, only bitter herbs!\par
+3. On all other nights we do not dip even once; tonight, we dip twice!\par
+4. On all other nights we eat either sitting upright or reclining; tonight, we all recline!
+\end{minipage}
+}
+
+\renewcommand{\SpanishContent}{%
+\begin{minipage}[t]{\linewidth}
+\textbf{Las Cuatro Preguntas}\par\vspace{0.5em}
+El niño más joven pregunta:\par
+¿Por qué esta noche es diferente de todas las demás noches?\par
+1. En todas las noches comemos pan con levadura o sin levadura; esta noche, solo pan sin levadura (matzá)!\par
+2. En todas las noches comemos todo tipo de vegetales; esta noche, solo hierbas amargas!\par
+3. En todas las noches no mojamos ni una vez; esta noche, mojamos dos veces!\par
+4. En todas las noches comemos sentados o reclinados; esta noche, todos comemos reclinados!
+\end{minipage}
+}
+
+\begin{TriLingualStanza}
+\HebrewText{%
+\begin{minipage}[t]{\linewidth}
+\textbf{מה נשתנה}\par\vspace{0.5em}
+מַה נִּשְׁתַּנָּה הַלַּיְלָה הַזֶּה מִכָּל הַלֵּילוֹת?\par
+1. שֶׁבְּכָל הַלֵּילוֹת אָנוּ אוֹכְלִים חָמֵץ וּמַצָּה – הַלַּיְלָה הַזֶּה, כּוּלוֹ מַצָּה!\par
+2. שֶׁבְּכָל הַלֵּילוֹת אָנוּ אוֹכְלִים שְׁאָר יְרָקוֹת – הַלַּיְלָה הַזֶּה, מָרוֹר!\par
+3. שֶׁבְּכָל הַלֵּילוֹת אֵין אָנוּ מַטְבִּילִין אֲפִילוּ פַּעַם אֶחָת – הַלַּיְלָה הַזֶּה, שְׁתֵּי פְעָמִים!\par
+4. שֶׁבְּכָל הַלֵּילוֹת אָנוּ אוֹכְלִין בֵּין יוֹשְׁבִין וּבֵין מְסֻבִּין – הַלַּיְלָה הַזֶּה, כּוּלָנוּ מְסֻבִּין!
+\end{minipage}
+}
+\end{TriLingualStanza}
+
+\renewcommand{\EnglishContent}{%
+\begin{minipage}[t]{\linewidth}
+\textbf{The Answer to the Four Questions}\par\vspace{0.5em}
+(The Seder plate and the matzot are uncovered.)\par
+We were slaves to Pharaoh in Egypt, and Adonai, our God, brought us out from there with a strong hand and an outstretched arm. If the Holy One, blessed be He, had not taken our ancestors out of Egypt, then we, our children, and our children’s children would still be enslaved to Pharaoh in Egypt.\par
+Even if we were all wise, all understanding, all elders, and all knowledgeable in Torah, it would still be a mitzvah for us to tell about the Exodus from Egypt. And all who elaborate in telling the story of the Exodus are to be praised.
+\end{minipage}
+}
+
+\renewcommand{\SpanishContent}{%
+\begin{minipage}[t]{\linewidth}
+\textbf{La Respuesta a las Cuatro Preguntas}\par\vspace{0.5em}
+(Se descubren el plato del Seder y las matzot.)\par
+Éramos esclavos del Faraón en Egipto, y Adonai, nuestro Dios, nos sacó de allí con mano fuerte y brazo extendido. Si el Santo, bendito sea, no hubiera sacado a nuestros antepasados de Egipto, nosotros, nuestros hijos y los hijos de nuestros hijos seguiríamos esclavizados al Faraón en Egipto.\par
+Incluso si todos fuéramos sabios, entendidos, ancianos y conocedores de la Torá, seguiríamos teniendo el deber de contar la historia de la salida de Egipto. Y todo aquel que se extienda en relatar la salida de Egipto es digno de alabanza.
+\end{minipage}
+}
+
+\begin{TriLingualStanza}
+\HebrewText{%
+\begin{minipage}[t]{\linewidth}
+\textbf{תשובה למה נשתנה}\par\vspace{0.5em}
+(מְגַלִּים אֶת קְעָרַת הַסֵּדֶר וְאֶת הַמַּצוֹת.)\par
+עֲבָדִים הָיִינוּ לְפַרְעֹה בְּמִצְרָיִם, וַיּוֹצִיאֵנוּ יְיָ אֱלֹהֵינוּ מִשָּׁם בְּיָד חֲזָקָה וּבִזְרוֹעַ נְטוּיָה.\par
+וְאִלּוּ לֹא הוֹצִיא הַקָּדוֹשׁ בָּרוּךְ הוּא אֶת אֲבוֹתֵינוּ מִמִּצְרַיִם, הֲרֵי אָנוּ וּבָנֵינוּ וּבְנֵי בָנֵינוּ מְשֻׁעְבָּדִים הָיִינוּ לְפַרְעֹה בְּמִצְרָיִם.\par
+וַאֲפִילּוּ כֻּלָּנוּ חֲכָמִים, כֻּלָּנוּ נְבוֹנִים, כֻּלָּנוּ זוּקֵנִים, כֻּלָּנוּ יוֹדְעִים אֶת הַתּוֹרָה – מִצְוָה עָלֵינוּ לְסַפֵּר בִּיצִיאַת מִצְרַיִם.\par
+וְכָל הַמַּרְבֶּה לְסַפֵּר בִּיצִיאַת מִצְרַיִם – הֲרֵי זֶה מְשֻׁבָּח!
+\end{minipage}
+}
+\end{TriLingualStanza}
+\renewcommand{\EnglishContent}{%
+\begin{minipage}[t]{\linewidth}
+\textbf{The Rabbis in Bnei Brak \& Introduction to the Four Sons}\par\vspace{0.5em}
+1. It happened that Rabbi Eliezer, Rabbi Yehoshua, Rabbi Elazar ben Azaryah, Rabbi Akiva, and Rabbi Tarfon were reclining at a Seder in Bnei Brak. They discussed the Exodus from Egypt all night until their students came and said: “Our masters, the time for reciting the morning Shema has arrived!”\par
+2. Rabbi Elazar ben Azaryah said: “Behold, I am like a man of seventy years, and I never succeeded in proving that the Exodus must be mentioned at night until Ben Zoma interpreted: ‘That you may remember the day of your departure from Egypt all the days of your life.’\par
+3. ‘The days of your life’ refers to the days; ‘all the days of your life’ includes the nights.”\par
+4. The sages say: “The days of your life” refers to this world; “all the days” includes the days of Mashiach.\par
+5. Blessed is the Omnipresent, blessed is He! Blessed is He who gave the Torah to His people Israel, blessed is He!\par
+6. The Torah speaks of four children: one is wise, one is wicked, one is simple, and one does not know how to ask.
+\end{minipage}
+}
+
+\renewcommand{\SpanishContent}{%
+\begin{minipage}[t]{\linewidth}
+\textbf{Los Rabinos en Bnei Brak \& Introducción a los Cuatro Hijos}\par\vspace{0.5em}
+1. Sucedió que Rabí Eliezer, Rabí Yehoshua, Rabí Elazar ben Azaryá, Rabí Akiva y Rabí Tarfón estaban reclinados en un Séder en Bnei Brak. Relataron la salida de Egipto toda la noche, hasta que llegaron sus alumnos y les dijeron: “¡Maestros, ha llegado el momento del Shemá de la mañana!”\par
+2. Rabí Elazar ben Azaryá dijo: “He aquí que soy como un hombre de setenta años, y nunca logré probar que debía mencionarse la salida de Egipto por la noche hasta que Ben Zomá explicó: ‘Para que recuerdes el día en que saliste de Egipto todos los días de tu vida.’\par
+3. ‘Los días de tu vida’ se refiere a los días; ‘todos los días’ incluye las noches.”\par
+4. Los sabios dicen: “‘Los días de tu vida’ se refiere a este mundo; ‘todos los días’ incluye los días del Mashíaj.”\par
+5. ¡Bendito sea el Omnipresente, bendito sea! ¡Bendito sea quien dio la Torá a Su pueblo Israel, bendito sea!\par
+6. La Torá habla de cuatro hijos: uno sabio, uno malvado, uno simple y uno que no sabe preguntar.
+\end{minipage}
+}
+
+\begin{TriLingualStanza}
+\HebrewText{%
+\begin{minipage}[t]{\linewidth}
+\textbf{מַעֲשֶׂה בְּרַבָּנִים וּפְתִיחָה לְאַרְבָּעָה בָּנִים}\par\vspace{0.5em}
+1. מַעֲשֶׂה בְּרַבִּי אֱלִיעֶזֶר, וְרַבִּי יְהוֹשֻׁעַ, וְרַבִּי אֶלְעָזָר בֶּן עֲזַרְיָה, וְרַבִּי עֲקִיבָא, וְרַבִּי טַרְפוֹן – שֶׁהָיוּ מְסֻבִּין בִּבְנֵי בְּרַק. וְהָיוּ מְסַפְּרִים בִּיצִיאַת מִצְרָיִם כָּל אוֹתוֹ הַלַּיְלָה, עַד שֶׁבָּאוּ תַּלְמִידֵיהֶם וְאָמְרוּ לָהֶם: “רַבּוֹתֵינוּ! הִגִּיעַ זְמַן קְרִיאַת שְׁמַע שֶׁל שַׁחֲרִית!”\par
+2. אָמַר רַבִּי אֶלְעָזָר בֶּן עֲזַרְיָה: “הֲרֵי אֲנִי כְּבֶן שִׁבְעִים שָׁנָה, וְלֹא זָכִיתִי שֶׁתֵּאָמֵר יְצִיאַת מִצְרַיִם בַּלֵּילוֹת – עַד שֶׁדְּרָשָׁהּ בֶּן זוֹמָא, שֶׁנֶּאֱמַר: ‘לְמַעַן תִּזְכֹּר אֶת יוֹם צֵאתְךָ מֵאֶרֶץ מִצְרַיִם כֹּל יְמֵי חַיֶּיךָ.’\par
+3. ‘יְמֵי חַיֶּיךָ’ – הַיָּמִים; ‘כֹּל יְמֵי חַיֶּיךָ’ – הַלֵּילוֹת.”\par
+4. וַאֲמַרוּ חֲכָמִים: “יְמֵי חַיֶּיךָ – הָעוֹלָם הַזֶּה; כֹּל יְמֵי חַיֶּיךָ – לְהָבִיא לִימוֹת הַמָּשִׁיחַ.”\par
+5. בָּרוּךְ הַמָּקוֹם, בָּרוּךְ הוּא! בָּרוּךְ שֶׁנָּתַן תּוֹרָה לְעַמּוֹ יִשְׂרָאֵל – בָּרוּךְ הוּא!\par
+6. כְּנֶגֶד אַרְבָּעָה בָּנִים דִּבְּרָה תּוֹרָה: אֶחָד חָכָם, אֶחָד רָשָׁע, אֶחָד תָּם, וְאֶחָד שֶׁאֵינוֹ יוֹדֵעַ לִשְׁאֹל.
+\end{minipage}
+}
+\end{TriLingualStanza}
+
+\renewcommand{\EnglishContent}{%
+\begin{minipage}[t]{\linewidth}
+\textbf{The Four Children – Questions and Answers}\par\vspace{0.5em}
+1. The Torah speaks of four children: one wise, one wicked, one simple, and one who does not know how to ask.\par
+2. The wise one, what does he say? “What are the testimonies, statutes, and laws which Adonai our God has commanded you?” You shall instruct him in the laws of Pesach, even to the final detail: “One may not eat after the Pesach offering.”\par
+3. The wicked one, what does he say? “What is this service to you?” “To you,” and not to him! By excluding himself from the community, he denies a central principle of faith. You must blunt his teeth and say to him: “It is because of this that Adonai did for me when I left Egypt.” “For me,” and not for him – had he been there, he would not have been redeemed.\par
+4. The simple one, what does he say? “What is this?” You shall say to him: “With a strong hand Adonai took us out of Egypt, from the house of bondage.”\par
+5. And the one who does not know how to ask – you shall begin for him, as it is written: “You shall tell your child on that day, saying: ‘It is because of this that Adonai did for me when I went out of Egypt.’”
+\end{minipage}
+}
+
+\renewcommand{\SpanishContent}{%
+\begin{minipage}[t]{\linewidth}
+\textbf{Los Cuatro Hijos – Preguntas y Respuestas}\par\vspace{0.5em}
+1. La Torá habla de cuatro hijos: uno sabio, uno malvado, uno simple, y uno que no sabe preguntar.\par
+2. ¿Qué dice el sabio? “¿Cuáles son los testimonios, estatutos y leyes que Adonai nuestro Dios les ha ordenado?” Tú le enseñarás todas las leyes de Pésaj, hasta el último detalle: “Después del sacrificio del Pésaj no se come más.”\par
+3. ¿Qué dice el malvado? “¿Qué es este servicio para ustedes?” – “Para ustedes,” no para él. Al excluirse del pueblo, niega un principio fundamental de la fe. Tú debes golpearle los dientes y decirle: “Por causa de esto hizo Adonai por mí cuando salí de Egipto.” “Por mí,” y no por él. Si él hubiera estado allí, no habría sido redimido.\par
+4. ¿Qué dice el simple? “¿Qué es esto?” Le responderás: “Con mano fuerte nos sacó Adonai de Egipto, de la casa de esclavitud.”\par
+5. Y al que no sabe preguntar – tú debes iniciar por él, como está escrito: “Y le contarás a tu hijo en ese día, diciendo: ‘Por causa de esto hizo Adonai por mí cuando salí de Egipto.’”
+\end{minipage}
+}
+
+\begin{TriLingualStanza}
+\HebrewText{%
+\begin{minipage}[t]{\linewidth}
+\textbf{אַרְבָּעָה בָּנִים – שְׁאֵלוֹת וּתְשׁוּבוֹת}\par\vspace{0.5em}
+1. כְּנֶגֶד אַרְבָּעָה בָּנִים דִּבְּרָה תּוֹרָה: אֶחָד חָכָם, אֶחָד רָשָׁע, אֶחָד תָּם, וְאֶחָד שֶׁאֵינוֹ יוֹדֵעַ לִשְׁאֹל.\par
+2. חָכָם מָה הוּא אוֹמֵר? “מָה הָעֵדוֹת וְהַחֻקִּים וְהַמִּשְׁפָּטִים אֲשֶׁר צִוָּה יְיָ אֱלֹהֵינוּ אֶתְכֶם?” וְאַף אַתָּה אֱמוֹר לוֹ כְּהִלְכוֹת הַפֶּסַח: אֵין מַפְטִירִין אַחַר הַפֶּסַח אַפִיקוֹמָן!\par
+3. רָשָׁע מָה הוּא אוֹמֵר? “מָה הָעֲבֹדָה הַזֹּאת לָכֶם?” – “לָכֶם” וְלֹא לוֹ! וּלְפִי שֶׁהוֹצִיא אֶת עַצְמוֹ מִן הַכְּלָל – כָּפַר בְּעִקָּר! אַתָּה הַקְהֵה אֶת שִׁנָּיו, וֶאֱמוֹר לוֹ: “בַּעֲבוּר זֶה עָשָׂה יְיָ לִי בְּצֵאתִי מִמִּצְרַיִם” – “לִי” וְלֹא “לוֹ” – “אִלּוּ הָיָה שָׁם, לֹא הָיָה נִגְאָל!”\par
+4. תָּם מָה הוּא אוֹמֵר? “מַה זֹּאת?” – וְאָמַרְתָּ אֵלָיו: “בְּחֹזֶק יָד הוֹצִיאָנוּ יְיָ מִמִּצְרַיִם מִבֵּית עֲבָדִים.”\par
+5. וְשֶׁאֵינוֹ יוֹדֵעַ לִשְׁאֹל – אַתְּ פְּתַח לוֹ, שֶׁנֶּאֱמַר: “וְהִגַּדְתָּ לְבִנְךָ בַּיּוֹם הַהוּא לֵאמֹר: בַּעֲבוּר זֶה עָשָׂה יְיָ לִי בְּצֵאתִי מִמִּצְרַיִם.”
+\end{minipage}
+}
+\end{TriLingualStanza}
+
+\renewcommand{\EnglishContent}{%
+\begin{minipage}[t]{\linewidth}
+\textbf{7. From Idol Worship to Divine Service}\par\vspace{0.5em}
+1. You shall tell your child on that day, saying: “It is because of this that Adonai did for me when I went out of Egypt.”\par
+2. One might think this should be said from the beginning of the month. The Torah therefore says, “On that day.”\par
+3. Could this mean during the daytime? The Torah also says, “Because of this” – meaning, when matzah and maror are before you.\par
+4. In the beginning, our ancestors worshipped idols, but now the Omnipresent One has drawn us near to His service.\par
+5. As it is said: “Yehoshua said to all the people: Thus says Adonai, the God of Israel: ‘Your fathers dwelled beyond the river from time immemorial – Terach, the father of Avraham and the father of Nachor – and they served other gods.’”\par
+6. “And I took your father Avraham from beyond the river and led him through the land of Canaan. I multiplied his seed and gave him Yitzchak.”\par
+7. “To Yitzchak I gave Yaakov and Esav. I gave Esav Mount Seir to inherit, but Yaakov and his sons went down to Egypt.”
+\end{minipage}
+}
+
+\renewcommand{\SpanishContent}{%
+\begin{minipage}[t]{\linewidth}
+\textbf{7. Del Paganismo al Servicio Divino}\par\vspace{0.5em}
+1. Y le contarás a tu hijo en ese día diciendo: “Por causa de esto hizo Adonai por mí al salir de Egipto.”\par
+2. Podrías pensar que esto debe decirse desde principios del mes. La Torá dice: “En ese día.”\par
+3. ¿Puede ser durante el día? También dice: “Por causa de esto” – es decir, cuando la matzá y el maror están frente a ti.\par
+4. Al principio, nuestros antepasados eran idólatras, pero ahora el Omnipresente nos ha acercado a Su servicio.\par
+5. Como dice: “Yehoshua dijo a todo el pueblo: Así dice Adonai, el Dios de Israel: ‘Vuestros padres vivieron desde tiempos antiguos más allá del río – Téraj, padre de Avraham y padre de Najor – y servían a otros dioses.’”\par
+6. “Tomé a su padre Avraham del otro lado del río, lo guié por toda la tierra de Canaán, multipliqué su descendencia y le di a Yitzjak.”\par
+7. “A Yitzjak le di a Yaakov y a Esav; a Esav le di el Monte Seir como herencia, pero Yaakov y sus hijos descendieron a Egipto.”
+\end{minipage}
+}
+
+\begin{TriLingualStanza}
+\HebrewText{%
+\begin{minipage}[t]{\linewidth}
+\textbf{7. וְהִגַּדְתָּ לְבִנְךָ – מִתְּחִלָּה עוֹבְדֵי עֲבוֹדָה זָרָה}\par\vspace{0.5em}
+1. וְהִגַּדְתָּ לְבִנְךָ בַּיּוֹם הַהוּא לֵאמֹר: בַּעֲבוּר זֶה עָשָׂה יְיָ לִי בְּצֵאתִי מִמִּצְרָיִם.\par
+2. יָכוֹל מֵרֹאשׁ חֹדֶשׁ? תַּלְמוּד לוֹמַר: “בַּיּוֹם הַהוּא.”\par
+3. יָכוֹל מִבְּעוֹד יוֹם? תַּלְמוּד לוֹמַר: “בַּעֲבוּר זֶה” – בִּשְׁעַת שֶׁיֶּשׁ מַצָּה וּמָרוֹר מוּנָחִים לְפָנֶיךָ.\par
+4. מִתְּחִלָּה עוֹבְדֵי עֲבוֹדָה זָרָה הָיוּ אֲבוֹתֵינוּ, וְעַכְשָׁו קֵרְבָנוּ הַמָּקוֹם לַעֲבוֹדָתוֹ.\par
+5. שֶׁנֶּאֱמַר: וַיֹּאמֶר יְהוֹשֻׁעַ אֶל כָּל הָעָם: כֹּה אָמַר יְיָ אֱלֹהֵי יִשְׂרָאֵל: בְּעֵבֶר הַנָּהָר יָשְׁבוּ אֲבוֹתֵיכֶם מֵעוֹלָם – תֶּרַח אֲבִי אַבְרָהָם וְאֲבִי נָחוֹר – וַיַּעַבְדוּ אֱלֹהִים אֲחֵרִים.\par
+6. וָאֶקַּח אֶת אֲבִיכֶם אֶת אַבְרָהָם מֵעֵבֶר הַנָּהָר, וָאוֹלֶךְ אוֹתוֹ בְּכָל אֶרֶץ כְּנָעַן, וָאַרְבֶּה אֶת זַרְעוֹ, וָאֶתֵּן לוֹ אֶת יִצְחָק.\par
+7. וָאֶתֵּן לְיִצְחָק אֶת יַעֲקֹב וְאֶת עֵשָׂו; וָאֶתֵּן לְעֵשָׂו אֶת הַר שֵׂעִיר לְרִשְׁתּוֹ; וְיַעֲקֹב וּבָנָיו יָרְדוּ מִצְרָיְמָה.
+\end{minipage}
+}
+\end{TriLingualStanza}
+\renewcommand{\EnglishContent}{%
+\begin{minipage}[t]{\linewidth}
+\textbf{God’s Promise to Avraham}\par\vspace{0.5em}
+Blessed is He who keeps His promise to Israel, blessed is He!\par
+For the Holy One, blessed be He, calculated the end to fulfill what He said to Avraham our father at the Covenant Between the Parts:\par
+“Know with certainty that your descendants will be strangers in a land that is not theirs.\par
+They will enslave them and oppress them for four hundred years.\par
+But also the nation whom they will serve, I will judge.\par
+And afterward they shall leave with great wealth.”\par\vspace{1em}
+
+\textbf{Vehi She’amdah – It Is This That Has Stood}\par\vspace{0.5em}
+And it is this that has stood for our ancestors and for us.\par
+For not just one has risen against us to destroy us.\par
+In every generation they rise against us to destroy us —\par
+But the Holy One, blessed be He, saves us from their hands.
+\textbf{(The wine cup is put down and the matzot are uncovered)}
+
+\end{minipage}
+}
+
+\renewcommand{\SpanishContent}{%
+\begin{minipage}[t]{\linewidth}
+\textbf{La Promesa a Avraham}\par\vspace{0.5em}
+¡Bendito sea Quien cumple Su promesa a Israel, bendito sea!\par
+Porque el Santo, bendito sea, calculó el fin para cumplir lo que dijo a nuestro padre Avraham en el Pacto entre las Partes:\par
+“Sabe con certeza que tus descendientes serán extranjeros en una tierra que no les pertenece.\par
+Serán esclavizados y oprimidos durante cuatrocientos años.\par
+Pero también juzgaré a la nación que los esclavizará.\par
+Y después saldrán con gran riqueza.”\par\vspace{1em}
+
+\textbf{Vehi She’amdah – Esto es lo que nos ha sostenido}\par\vspace{0.5em}
+Y esto es lo que sostuvo a nuestros padres y a nosotros.\par
+Porque no solo uno se levantó contra nosotros para destruirnos.\par
+En cada generación se levantan contra nosotros para exterminarnos —\par
+Pero el Santo, bendito sea, nos salva de sus manos.
+\textbf{(Se baja la copa de vino y se descubren las matzot)}
+
+\end{minipage}
+}
+
+\begin{TriLingualStanza}
+\HebrewText{%
+\begin{minipage}[t]{\linewidth}
+\textbf{הַבְטָחָה לְאַבְרָהָם אָבִינוּ}\par\vspace{0.5em}
+בָּרוּךְ שׁוֹמֵר הַבְטָחָתוֹ לְיִשְׂרָאֵל, בָּרוּךְ הוּא!\par
+שֶׁהַקָּדוֹשׁ בָּרוּךְ הוּא חִשֵּׁב אֶת הַקֵּץ, לַעֲשׂוֹת כְּמַה שֶּׁאָמַר לְאַבְרָהָם אָבִינוּ בִּבְרִית בֵּין הַבְּתָרִים:\par
+יָדֹעַ תֵּדַע כִּי גֵר יִהְיֶה זַרְעֲךָ בְּאֶרֶץ לֹא לָהֶם,\par
+וַעֲבָדוּם וְעִנּוּ אוֹתָם אַרְבַּע מֵאוֹת שָׁנָה.\par
+וְגַם אֶת־הַגּוֹי אֲשֶׁר יַעֲבֹדוּ דָּן אָנֹכִי,\par
+וְאַחֲרֵי כֵן יֵצְאוּ בִּרְכֻשׁ גָּדוֹל.\par\vspace{1em}
+
+\textbf{וְהִיא שֶׁעָמְדָה}\par\vspace{0.5em}
+וְהִיא שֶׁעָמְדָה לַאֲבוֹתֵינוּ וְלָנוּ.\par
+שֶׁלֹּא אֶחָד בִּלְבַד עָמַד עָלֵינוּ לְכַלּוֹתֵנוּ —\par
+אֶלָּא שֶׁבְּכָל דּוֹר וָדוֹר עוֹמְדִים עָלֵינוּ לְכַלּוֹתֵנוּ —\par
+וְהַקָּדוֹשׁ בָּרוּךְ הוּא מַצִּילֵנוּ מִיָּדָם.
+\textbf{(מוֹרִידִים אֶת הַכּוֹס וּמְגַלִּים אֶת הַמַּצּוֹת)}
+
+\end{minipage}
+}
+\end{TriLingualStanza}
+
+
+
+\renewcommand{\EnglishContent}{%
+\begin{minipage}[t]{\linewidth}
+\textbf{Go and Learn — Part 1}\par\vspace{0.5em}
+Go forth and learn what Laban the Aramean sought to do to our father Yaakov.\par
+Pharaoh decreed only against the males, but Laban sought to uproot everything — as it is said:\par
+“An Aramean (Laban) sought to destroy my father; and he went down to Egypt and sojourned there, few in number; and there he became a nation — great, mighty, and numerous.”\par
+“And he went down to Egypt” — compelled by the Divine decree.\par
+“And he sojourned there” — this teaches that our father Yaakov did not go down to Egypt to settle, but only to reside temporarily — as it is said: “They said to Pharaoh: We have come to sojourn in the land, for there is no pasture for your servants’ flocks because the famine is severe in Canaan; now, please let your servants dwell in the land of Goshen.”
+\end{minipage}
+}
+
+\renewcommand{\SpanishContent}{%
+\begin{minipage}[t]{\linewidth}
+\textbf{Sal y Aprende — Parte 1}\par\vspace{0.5em}
+Sal y aprende lo que Laván el arameo intentó hacer a nuestro padre Yaakov.\par
+Faraón decretó sólo contra los varones, pero Laván intentó arrancarlo todo — como está dicho:\par
+“Un arameo quiso destruir a mi padre; y descendió a Egipto y residió allí con pocas personas; y allí se convirtió en una nación — grande, poderosa y numerosa.”\par
+“Y descendió a Egipto” — forzado por el decreto Divino.\par
+“Y residió allí” — enseña que nuestro padre Yaakov no descendió a establecerse, sino a habitar temporalmente — como está dicho: “Dijeron a Faraón: Hemos venido a habitar esta tierra, pues no hay pasto para el ganado de tus siervos por la gran hambruna en Canaán; permite, por favor, que tus siervos habiten en la tierra de Goshen.”
+\end{minipage}
+}
+
+\begin{TriLingualStanza}
+\HebrewText{%
+\begin{minipage}[t]{\linewidth}
+\textbf{צֵא וּלְמַד — חלק א'}\par\vspace{0.5em}
+צֵא וּלְמַד מַה בִּקֵּשׁ לָבָן הָאֲרַמִּי לַעֲשׂוֹת לְיַעֲקֹב אָבִינוּ.\par
+שֶׁפַּרְעֹה לֹא גָּזַר אֶלָּא עַל הַזְּכָרִים, וְלָבָן בִּקֵּשׁ לַעֲקוֹר אֶת הַכֹּל — שֶׁנֶּאֱמַר:\par
+אֲרַמִּי אֹבֵד אָבִי, וַיֵּרֶד מִצְרָיְמָה; וַיָּגָר שָׁם בִּמְתֵי מְעָט, וַיְהִי שָׁם לְגוֹי גָּדוֹל, עָצוּם וָרָב.\par
+וַיֵּרֶד מִצְרָיְמָה – עָנוּס עַל פִּי הַדִּבּוּר.\par
+וַיָּגָר שָׁם – מְלַמֵּד שֶׁלֹּא יָרַד יַעֲקֹב אָבִינוּ לְהִשְׁתַּקֵּעַ בְּמִצְרַיִם, אֶלָּא לָגוּר שָׁם — שֶׁנֶּאֱמַר: וַיֹּאמְרוּ אֶל פַּרְעֹה: לָגוּר בָּאָרֶץ בָּאנוּ...
+\end{minipage}
+}
+\end{TriLingualStanza}
+
+\renewcommand{\EnglishContent}{%
+\begin{minipage}[t]{\linewidth}
+\textbf{Go and Learn — Part 2}\par\vspace{0.5em}
+“Few in number” — as it is said: “Your fathers went down to Egypt with seventy persons, and now Adonai your God has made you as numerous as the stars of heaven.”\par
+“And he became there a nation” — this teaches that Israel became distinguished there.\par
+“Great and mighty” — as it is said: “The children of Israel were fruitful, teemed, increased, and became very, very mighty; and the land was filled with them.”\par
+“And numerous” — as it is said: “I passed over you and saw you wallowing in your blood, and I said to you: ‘By your blood you shall live!’ and I said to you: ‘By your blood you shall live!’ I caused you to thrive like the plants of the field, and you increased and grew and became very beautiful; your breasts were formed and your hair grew, yet you were naked and bare.”
+\end{minipage}
+}
+
+\renewcommand{\SpanishContent}{%
+\begin{minipage}[t]{\linewidth}
+\textbf{Sal y Aprende — Parte 2}\par\vspace{0.5em}
+“Con pocas personas” — como está dicho: “Tus padres descendieron a Egipto con setenta personas, y ahora Adonai tu Dios te ha multiplicado como las estrellas del cielo.”\par
+“Y allí se convirtió en una nación” — enseña que Israel se mantuvo distinguido allí.\par
+“Grande y poderosa” — como está dicho: “Los hijos de Israel fueron fecundos, se multiplicaron, crecieron mucho y se fortalecieron en gran manera; y la tierra se llenó de ellos.”\par
+“Y numerosa” — como está dicho: “Pasé junto a ti y te vi revolcándote en tu sangre, y te dije: ‘¡Con tu sangre vivirás!’ y te dije: ‘¡Con tu sangre vivirás!’ Te hice crecer como las plantas del campo; creciste, te desarrollaste y llegaste a ser hermosa; se formaron tus pechos, creció tu cabello, pero estabas desnuda y descubierta.”
+\end{minipage}
+}
+
+\begin{TriLingualStanza}
+\HebrewText{%
+\begin{minipage}[t]{\linewidth}
+\textbf{צֵא וּלְמַד — חלק ב'}\par\vspace{0.5em}
+בִּמְתֵי מְעָט — שֶׁנֶּאֱמַר: בְּשִׁבְעִים נֶפֶשׁ יָרְדוּ אֲבֹתֶיךָ מִצְרָיְמָה, וְעַתָּה שָׂמְךָ יְיָ אֱלֹהֶיךָ כְּכוֹכְבֵי הַשָּׁמַיִם לָרֹב.\par
+וַיְהִי שָׁם לְגוֹי — מְלַמֵּד שֶׁהָיוּ יִשְׂרָאֵל מְיוּחָדִים שָׁם.\par
+גָּדוֹל וָעָצוּם — שֶׁנֶּאֱמַר: וּבְנֵי יִשְׂרָאֵל פָּרוּ וַיִּשְׁרְצוּ, וַיִּרְבּוּ, וַיַּעַצְמוּ בִּמְאֹד מְאֹד, וַתִּמָּלֵא הָאָרֶץ אֹתָם.\par
+וָרָב — שֶׁנֶּאֱמַר: וָאֶעֱבֹר עָלַיִךְ, וָאֵרֵאֵךְ מִתְבֹּסֶסֶת בְּדָמָיִךְ; וָאֹמַר לָךְ: בְּדָמָיִךְ חֲיִי; וָאֹמַר לָךְ: בְּדָמָיִךְ חֲיִי...
+\end{minipage}
+}
+\end{TriLingualStanza}
+
+
+\renewcommand{\EnglishContent}{%
+\begin{minipage}[t]{\linewidth}
+\textbf{1. The Egyptian Oppression}\par\vspace{0.5em}
+“The Egyptians treated us badly, and they afflicted us, and they placed hard labor upon us.”\par
+“The Egyptians treated us badly,” as it is said: “Come, let us deal wisely with them, lest they multiply; and if war occurs, they will join our enemies and fight against us and depart from the land.”\par
+“And they afflicted us,” as it is said: “They set taskmasters over us to afflict us with their burdens, and they built storage cities for Pharaoh, Pitom and Raamses.”\par
+“And they placed hard labor upon us,” as it is said: “The Egyptians made the children of Israel work with rigor. And they made their lives bitter with hard work, with mortar and with bricks, and with all manner of service in the field; all their service that they made them serve with rigor.”
+\end{minipage}
+}
+
+\renewcommand{\SpanishContent}{%
+\begin{minipage}[t]{\linewidth}
+\textbf{1. La opresión egipcia}\par\vspace{0.5em}
+“Los egipcios nos trataron mal, nos afligieron y nos impusieron trabajos forzados.”\par
+“Los egipcios nos trataron mal,” como está escrito: “Obremos astutamente con ellos, no sea que se multipliquen; y si estalla una guerra, se unan a nuestros enemigos y se escapen del país.”\par
+“Y nos afligieron,” como está dicho: “Designaron sobre ellos capataces para afligirlos con sus cargas, y edificaron para Paró ciudades de almacenamiento, Pitom y Ramsés.”\par
+“Y nos impusieron trabajos forzados,” como está dicho: “Los egipcios obligaron a los hijos de Israel a servir con dureza. Y amargaron su vida con dura servidumbre, con barro y ladrillos, y con todo tipo de trabajo en el campo; todo su servicio fue con rigor.”
+\end{minipage}
+}
+
+\begin{TriLingualStanza}
+\HebrewText{%
+\begin{minipage}[t]{\linewidth}
+\textbf{1. עֲבָדִים בְּמִצְרַיִם}\par\vspace{0.5em}
+וַיָּרֵעוּ אֹתָנוּ הַמִּצְרִים, וַיְעַנּוּנוּ, וַיִּתְּנוּ עָלֵינוּ עֲבֹדָה קָשָׁה.\par
+וַיָּרֵעוּ אֹתָנוּ הַמִּצְרִים – שֶׁנֶּאֱמַר: “הָבָה נִתְחַכְּמָה לוֹ פֶּן יִרְבֶּה, וְהָיָה כִּי תִקְרֶאנָה מִלְחָמָה – וְנוֹסַף גַּם־הוּא עַל שֹׂנְאֵינוּ וְנִלְחַם־בָּנוּ וְעָלָה מִן־הָאָרֶץ.”\par
+וַיְעַנּוּנוּ – שֶׁנֶּאֱמַר: “וַיָּשִׂימוּ עָלָיו שָׂרֵי מִסִּים לְמַעַן עַנֹּתוֹ בְּסִבְלֹתָם, וַיִּבֶן עָרֵי מִסְכְּנוֹת לְפַרְעֹה – אֶת פִּתֹם וְאֶת רַעַמְסֵס.”\par
+וַיִּתְּנוּ עָלֵינוּ עֲבֹדָה קָשָׁה – שֶׁנֶּאֱמַר: “וַיַּעֲבִדוּ מִצְרַיִם אֶת בְּנֵי יִשְׂרָאֵל בְּפָרֶךְ. וַיְמָרְרוּ אֶת חַיֵּיהֶם בַּעֲבֹדָה קָשָׁה – בְּחֹמֶר וּבִלְבֵנִים, וּבְכָל עֲבוֹדָה בַּשָּׂדֶה.”
+\end{minipage}
+}
+\end{TriLingualStanza}
+\renewcommand{\EnglishContent}{%
+\begin{minipage}[t]{\linewidth}
+\textbf{God Responds to Our Cry}\par\vspace{0.5em}
+And we cried out to God, the God of our fathers,\par
+and God heard our voice and saw our suffering, our labor, and our oppression:\par\vspace{0.5em}
+“And it was during that long period that the king of Egypt died; the children of Israel groaned from the labor, and they cried out, and their cry from the labor rose up to God.”\par
+“And God heard their groaning, and God remembered His covenant with Abraham, Isaac, and Jacob.”\par
+“And God saw the children of Israel, and God knew.”\par
+“Every boy that is born you shall cast into the river, and every girl you shall keep alive.”\par
+“I have also seen the oppression with which the Egyptians oppress them.”
+\end{minipage}
+}
+
+\renewcommand{\SpanishContent}{%
+\begin{minipage}[t]{\linewidth}
+\textbf{Dios responde a nuestro clamor}\par\vspace{0.5em}
+Y clamamos a Dios, el Dios de nuestros padres,\par
+y Dios escuchó nuestra voz y vio nuestro sufrimiento, nuestro trabajo y nuestra opresión:\par\vspace{0.5em}
+“Y aconteció que durante aquellos muchos días murió el rey de Egipto; los hijos de Israel gemían a causa del trabajo, y clamaron; y su clamor subió a Dios desde el trabajo.”\par
+“Y Dios oyó su gemido, y Dios recordó Su pacto con Abraham, con Isaac y con Jacob.”\par
+“Y Dios vio a los hijos de Israel, y Dios supo.”\par
+“A todo niño que nazca lo echaréis al río, y a toda niña la dejaréis vivir.”\par
+“También he visto la opresión con que los egipcios los oprimen.”
+\end{minipage}
+}
+
+\begin{TriLingualStanza}
+\HebrewText{%
+\begin{minipage}[t]{\linewidth}
+\textbf{וַיִּשְׁמַע אֱלֹהִים אֶת קוֹלֵנוּ}\par\vspace{0.5em}
+וַנִּצְעַק אֶל יְיָ אֱלֹהֵי אֲבוֹתֵינוּ,\par
+וַיִּשְׁמַע יְיָ אֶת קוֹלֵנוּ,\par
+וַיַּרְא אֶת עָנְיֵנוּ, וְאֶת עֲמָלֵנוּ, וְאֶת לַחֲצֵנוּ.\par\vspace{0.5em}
+וַיְהִי בַּיָּמִים הָרַבִּים הָהֵם וַיָּמָת מֶלֶךְ מִצְרָיִם, וַיֵּאָנְחוּ בְּנֵי יִשְׂרָאֵל מִן הָעֲבֹדָה, וַיִּזְעָקוּ; וַתַּעַל שַׁוְעָתָם אֶל הָאֱלֹהִים מִן הָעֲבֹדָה.\par
+וַיִּשְׁמַע אֱלֹהִים אֶת נַאֲקָתָם, וַיִּזְכֹּר אֱלֹהִים אֶת בְּרִיתוֹ אֶת אַבְרָהָם אֵת יִצְחָק וְאֵת יַעֲקֹב.\par
+וַיַּרְא אֱלֹהִים אֶת בְּנֵי יִשְׂרָאֵל, וַיֵּדַע אֱלֹהִים.\par
+כָּל הַבֵּן הַיְּלֹד – הַיְאֹרָה תַּשְׁלִיכֻהוּ, וְכָל הַבַּת תְּחַיּוּן.\par
+וְגַם רָאִיתִי אֶת הַלַּחַץ אֲשֶׁר מִצְרַיִם לֹחֲצִים אֹתָם.
+\end{minipage}
+}
+\end{TriLingualStanza}
+
+\renewcommand{\EnglishContent}{%
+\begin{minipage}[t]{\linewidth}
+\textbf{God Took Us Out of Egypt Himself}\par\vspace{0.5em}
+And Adonai took us out of Egypt — not by an angel, not by a seraph, and not by a messenger, but the Holy One, blessed be He, Himself, in His glory:\par
+“As it is said: ‘And I will pass through the land of Egypt on that night, and I will smite every firstborn in the land of Egypt, from man to beast; and against all the gods of Egypt I will execute judgments — I, Adonai.’”\par
+“I will pass through the land of Egypt” — I, and not an angel;\par
+“and I will smite every firstborn” — I, and not a seraph;\par
+“and I will carry out judgments against all the gods of Egypt” — I, and not a messenger;\par
+“I, Adonai” — I am He, and no other!
+\end{minipage}
+}
+
+\renewcommand{\SpanishContent}{%
+\begin{minipage}[t]{\linewidth}
+\textbf{Dios Nos Sacó de Egipto Él Mismo}\par\vspace{0.5em}
+Y Adonai nos sacó de Egipto — no por medio de un ángel, ni por medio de un serafín, ni por medio de un mensajero, sino el Santo, bendito sea, Él mismo en Su gloria:\par
+“Como está dicho: ‘Y pasaré por la tierra de Egipto esa noche, y heriré a todo primogénito en la tierra de Egipto, desde el hombre hasta el animal; y ejecutaré juicios contra todos los dioses de Egipto — Yo, Adonai.’”\par
+“Pasaré por la tierra de Egipto” — Yo, y no un ángel;\par
+“y heriré a todo primogénito” — Yo, y no un serafín;\par
+“y ejecutaré juicios contra todos los dioses de Egipto” — Yo, y no un mensajero;\par
+“Yo, Adonai” — ¡Yo soy, y ningún otro!
+\end{minipage}
+}
+
+\begin{TriLingualStanza}
+\HebrewText{%
+\begin{minipage}[t]{\linewidth}
+\textbf{ויוציאנו ה׳ ממצרים}\par\vspace{0.5em}
+וַיּוֹצִיאֵנוּ ה׳ מִמִּצְרַיִם – לֹא עַל־יְדֵי מַלְאָךְ, וְלֹא עַל־יְדֵי שָׂרָף, וְלֹא עַל־יְדֵי שָׁלִיחַ – אֶלָּא הַקָּדוֹשׁ בָּרוּךְ הוּא בִּכְבוֹדוֹ וּבְעַצְמוֹ.\par
+שֶׁנֶּאֱמַר: “וְעָבַרְתִּי בְּאֶרֶץ מִצְרַיִם בַלַּיְלָה הַזֶּה, וְהִכֵּיתִי כָל בְּכוֹר בְּאֶרֶץ מִצְרַיִם, מֵאָדָם וְעַד בְּהֵמָה; וּבְכָל אֱלֹהֵי מִצְרַיִם אֶעֱשֶׂה שְׁפָטִים – אֲנִי ה׳.”\par
+“וְעָבַרְתִּי בְּאֶרֶץ מִצְרַיִם” – אֲנִי, וְלֹא מַלְאָךְ;\par
+“וְהִכֵּיתִי כָל בְּכוֹר” – אֲנִי, וְלֹא שָׂרָף;\par
+“וּבְכָל אֱלֹהֵי מִצְרַיִם אֶעֱשֶׂה שְׁפָטִים” – אֲנִי, וְלֹא שָׁלִיחַ;\par
+“אֲנִי ה׳” – אֲנִי הוּא וְלֹא אַחֵר!
+\end{minipage}
+}
+\end{TriLingualStanza}
+
+\renewcommand{\EnglishContent}{%
+\begin{minipage}[t]{\linewidth}
+\textbf{With a Strong Hand, Outstretched Arm, Awe, Signs, and Wonders}\par\vspace{0.5em}
+“With a strong hand” – this refers to the plague of pestilence, as it is said: “Behold, the hand of the LORD is upon your cattle that are in the field—upon the horses, upon the donkeys, upon the camels, upon the oxen, and upon the flock—a very severe pestilence.”\par
+“With an outstretched arm” – this refers to the sword, as it is said: “His sword was drawn in his hand, stretched out over Jerusalem.”\par
+“With great awe” – this refers to the revelation of the Divine Presence, as it is said: “Has any god tried to take for himself a nation from the midst of another nation, with trials, signs, wonders, war, with a strong hand and an outstretched arm, and with great awe—as the LORD your God did for you in Egypt before your eyes?”\par
+“With signs” – this refers to the staff, as it is said: “Take this staff in your hand, with which you shall perform the signs.”\par
+“And with wonders” – this refers to the blood, as it is said: “I will show wonders in the heavens and on the earth.”
+\end{minipage}
+}
+
+\renewcommand{\SpanishContent}{%
+\begin{minipage}[t]{\linewidth}
+\textbf{Con mano fuerte, brazo extendido, temor, señales y prodigios}\par\vspace{0.5em}
+“Con mano fuerte” – esto se refiere a la peste, como está dicho: “He aquí, la mano del Señor está sobre tu ganado que está en el campo —sobre los caballos, los burros, los camellos, el ganado y las ovejas— una peste muy severa.”\par
+“Con brazo extendido” – esto se refiere a la espada, como está dicho: “Su espada estaba desenvainada en su mano, extendida sobre Jerusalén.”\par
+“Con gran temor” – esto se refiere a la revelación de la Presencia Divina, como está dicho: “¿Acaso ha intentado algún dios venir a tomar para sí una nación de en medio de otra, con pruebas, señales, prodigios, guerra, con mano fuerte, brazo extendido y grandes temores, como todo lo que el Señor tu Dios hizo por ti en Egipto ante tus ojos?”\par
+“Con señales” – esto se refiere al bastón, como está dicho: “Toma este bastón en tu mano, con el cual harás las señales.”\par
+“Y con prodigios” – esto se refiere a la sangre, como está dicho: “Haré prodigios en los cielos y en la tierra.”
+\end{minipage}
+}
+
+\begin{TriLingualStanza}
+\HebrewText{%
+\begin{minipage}[t]{\linewidth}
+\textbf{בְּיָד חֲזָקָה וּבִזְרֹעַ נְטוּיָה וּבְמוֹרָא גָּדוֹל וּבְאֹתוֹת וּבְמוֹפְתִים}\par\vspace{0.5em}
+בְּיָד חֲזָקָה – זוֹ הַדֶּבֶר, כְּמָה שֶׁנֶּאֱמַר: הִנֵּה יַד־יְיָ הוֹיָה בְּמִקְנְךָ אֲשֶׁר בַּשָּׂדֶה, בַּסּוּסִים, בַּחֲמֹרִים, בַּגְּמַלִים, בַּבָּקָר וּבַצֹּאן – דֶּבֶר כָּבֵד מְאֹד.\par
+וּבִזְרֹעַ נְטוּיָה – זוֹ הַחֶרֶב, כְּמָה שֶׁנֶּאֱמַר: וְחַרְבּוֹ שְׁלוּפָה בְּיָדוֹ נְטוּיָה עַל יְרוּשָׁלָיִם.\par
+וּבְמוֹרָא גָּדוֹל – זוֹ גִלּוּי שְׁכִינָה, כְּמָה שֶׁנֶּאֱמַר: הֲנִסָּה אֱלֹהִים לָבוֹא לָקַחַת לוֹ גוֹי מִקֶּרֶב גּוֹי בְּמַסּוֹת, בְּאֹתוֹת, וּבְמוֹפְתִים, וּבְמִלְחָמָה, וּבְיָד חֲזָקָה, וּבִזְרֹעַ נְטוּיָה, וּבְמוֹרָאִים גְּדוֹלִים כְּכֹל אֲשֶׁר עָשָׂה יְיָ אֱלֹהֵיכֶם לָכֶם בְּמִצְרַיִם לְעֵינֶיךָ.\par
+וּבְאֹתוֹת – זֶה הַמַּטֶּה, כְּמָה שֶׁנֶּאֱמַר: וְאֶת־הַמַּטֶּה הַזֶּה תִּקַּח בְּיָדְךָ אֲשֶׁר תַּעֲשֶׂה־בּוֹ אֶת־הָאֹתוֹת.\par
+וּבְמוֹפְתִים – זֶה הַדָּם, כְּמָה שֶׁנֶּאֱמַר: וְנָתַתִּי מוֹפְתִים בַּשָּׁמַיִם וּבָאָרֶץ.
+\end{minipage}
+}
+\end{TriLingualStanza}
+
+\renewcommand{\EnglishContent}{%
+\begin{minipage}[t]{\linewidth}
+\textbf{The Ten Plagues}\par\vspace{0.5em}
+A drop of wine is spilled from the cup as each wonder is mentioned:\par
+“Blood, and fire, and pillars of smoke.”\par\vspace{0.5em}
+Another interpretation:\par
+“With a strong hand” – Two.\par
+“And an outstretched arm” – Two.\par
+“In an awesome happening” – Two.\par
+“With signs” – Two.\par
+“And with wonders” – Two.\par\vspace{0.5em}
+These were the ten plagues that the Holy One brought upon Egypt, and these are they:\par\vspace{0.5em}
+A drop of wine is spilled from the cup as each plague, and each of the acronyms, Detzakh, Adash and Be’ahav, is mentioned:\par
+Blood\par
+Frogs\par
+Lice\par
+Wild animals\par
+Pestilence\par
+Boils\par
+Hail\par
+Locusts\par
+Darkness\par
+The striking down of the firstborn.\par
+Rabbi Yehuda grouped these under acronyms – Detzakh, Adash, Be’ahav.
+\end{minipage}
+}
+
+\renewcommand{\SpanishContent}{%
+\begin{minipage}[t]{\linewidth}
+\textbf{Las Diez Plagas}\par\vspace{0.5em}
+Se derrama una gota de vino de la copa por cada maravilla mencionada:\par
+“Sangre, fuego y columnas de humo.”\par\vspace{0.5em}
+Otra interpretación:\par
+“Con mano fuerte” – Dos.\par
+“Con brazo extendido” – Dos.\par
+“Con gran temor” – Dos.\par
+“Con señales” – Dos.\par
+“Y con prodigios” – Dos.\par\vspace{0.5em}
+Estas fueron las diez plagas que el Santo, bendito sea, trajo sobre los egipcios en Egipto, y estas son:\par\vspace{0.5em}
+Se derrama una gota de vino de la copa por cada plaga, y por cada uno de los acrónimos, Detzaj, Adash y Beajav:\par
+Sangre\par
+Ranas\par
+Piojos\par
+Fieras salvajes\par
+Peste\par
+Úlceras\par
+Granizo\par
+Langostas\par
+Oscuridad\par
+La muerte de los primogénitos.\par
+Rabí Yehudá los agrupó en acrónimos – Detzaj, Adash, Beajav.
+\end{minipage}
+}
+
+\begin{TriLingualStanza}
+\HebrewText{%
+\begin{minipage}[t]{\linewidth}
+\textbf{עֶשֶׂר הַמַּכּוֹת}\par\vspace{0.5em}
+כְּשֶׁאוֹמֵר דָּם וָאֵשׁ וְתִימְרוֹת עָשָׁן, עֶשֶׂר הַמַּכּוֹת וְדְצַ"ךְ עֲדַ"שׁ בְּאַחַ"ב – יִשְׁפֹּךְ מִן הַכּוֹס מְעַט יַיִן:\par
+דָּם וָאֵשׁ וְתִימְרוֹת עָשָׁן.\par\vspace{0.5em}
+דָּבָר אַחֵר: בְּיָד חֲזָקָה – שְׁתַּיִם, וּבִזְרֹעַ נְטוּיָה – שְׁתַּיִם, וּבְמֹרָא גָּדֹל – שְׁתַּיִם, וּבְאֹתוֹת – שְׁתַּיִם, וּבְמֹפְתִים – שְׁתַּיִם.\par\vspace{0.5em}
+אֵלּוּ עֶשֶׂר מַכּוֹת שֶׁהֵבִיא הַקָּדוֹשׁ בָּרוּךְ הוּא עַל־הַמִּצְרִים בְּמִצְרַיִם, וְאֵלוּ הֵן:\par
+דָּם\par
+צְפַרְדֵּעַ\par
+כִּנִּים\par
+עָרוֹב\par
+דֶּבֶר\par
+שְׁחִין\par
+בָּרָד\par
+אַרְבֶּה\par
+חֹשֶׁךְ\par
+מַכַּת בְּכוֹרוֹת\par
+רַבִּי יְהוּדָה הָיָה נוֹתֵן בָּהֶם סִמָּנִים: דְּצַ"ךְ עֲדַ"שׁ בְּאַחַ"ב.
+\end{minipage}
+}
+\end{TriLingualStanza}
+
+
+\renewcommand{\EnglishContent}{%
+\begin{minipage}[t]{\linewidth}
+\textbf{How Many Plagues? — Part 1}\par\vspace{0.5em}
+Rabbi Yossei HaGelili says: How can you know that the Egyptians were struck with ten plagues in Egypt and another fifty at the sea? For in Egypt it is said, “The astrologers said to Pharaoh, ‘This is the finger of God,’” while at the sea it is said, “When Israel saw the great hand the LORD raised against the Egyptians, the people feared the LORD, and they believed in the LORD and in His servant Moses.” If a finger struck them with ten plagues, conclude from this that they were struck with ten plagues in Egypt and with fifty plagues at the sea.\par\vspace{0.5em}
+Rabbi Eliezer says: How can you know that each and every plague the Holy One brought upon the Egyptians in Egypt was in fact made up of four plagues? For it is said, “His fury was sent down upon them, great anger, rage, and distress, a company of messengers of destruction.” “Great anger” – one, “rage” – two, “distress” – three, “a company of messengers of destruction” – four. Conclude from this that they were struck with forty plagues in Egypt and with two hundred plagues at the sea.
+\end{minipage}
+}
+
+\renewcommand{\SpanishContent}{%
+\begin{minipage}[t]{\linewidth}
+\textbf{¿Cuántas Plagas? — Parte 1}\par\vspace{0.5em}
+Rabí Yosé HaGelilí dice: ¿Cómo puedes saber que los egipcios fueron castigados con diez plagas en Egipto y otras cincuenta en el mar? Pues en Egipto está dicho: “Los hechiceros dijeron al faraón: ‘Esto es el dedo de Dios’”, mientras que en el mar está dicho: “Cuando Israel vio la gran mano que el Señor levantó contra los egipcios, el pueblo temió al Señor y creyó en el Señor y en Su siervo Moisés.” Si con un dedo fueron heridos con diez plagas, concluye de esto que fueron heridos con diez plagas en Egipto y con cincuenta plagas en el mar.\par\vspace{0.5em}
+Rabí Eliezer dice: ¿Cómo puedes saber que cada plaga que el Santo, bendito sea, trajo sobre los egipcios en Egipto consistía en realidad en cuatro plagas? Pues está dicho: “Descargó sobre ellos el ardor de Su ira, enojo, furor y aflicción, una compañía de mensajeros destructores.” “Enojo” – una, “furor” – dos, “aflicción” – tres, “una compañía de mensajeros destructores” – cuatro. Concluye de esto que fueron heridos con cuarenta plagas en Egipto y con doscientas plagas en el mar.
+\end{minipage}
+}
+
+\begin{TriLingualStanza}
+\HebrewText{%
+\begin{minipage}[t]{\linewidth}
+\textbf{כַּמָּה מַכּוֹת? — חֵלֶק רִאשׁוֹן}\par\vspace{0.5em}
+רַבִּי יוֹסֵי הַגְּלִילִי אוֹמֵר: מִנַּיִן אַתָּה אוֹמֵר שֶׁלָּקוּ הַמִּצְרִים בְּמִצְרַיִם עֶשֶׂר מַכּוֹת וְעַל הַיָּם לָקוּ חֲמִשִּׁים מַכּוֹת? בְּמִצְרַיִם מַה הוּא אוֹמֵר? וַיֹּאמְרוּ הַחַרְטֻמִּים אֶל־פַּרְעֹה, אֶצְבַּע אֱלֹהִים הִוא. וְעַל הַיָּם מַה הוּא אוֹמֵר? וַיַּרְא יִשְׂרָאֵל אֶת־הַיָּד הַגְּדֹלָה אֲשֶׁר עָשָׂה יְיָ בְּמִצְרַיִם, וַיִּירְאוּ הָעָם אֶת־יְיָ, וַיַּאֲמִינוּ בַּייָ וּבְמֹשֶׁה עַבְדּוֹ. כַּמָּה לָקוּ בְּאֶצְבַּע? עֶשֶׂר מַכּוֹת. אֱמוֹר מֵעַתָּה: בְּמִצְרַיִם לָקוּ עֶשֶׂר מַכּוֹת וְעַל הַיָּם לָקוּ חֲמִשִּׁים מַכּוֹת.\par\vspace{0.5em}
+רַבִּי אֱלִיעֶזֶר אוֹמֵר: מִנַּיִן שֶׁכָּל־מַכָּה וּמַכָּה שֶׁהֵבִיא הַקָּדוֹשׁ בָּרוּךְ הוּא עַל הַמִּצְרִים בְּמִצְרַיִם הָיְתָה שֶׁל אַרְבַּע מַכּוֹת? שֶׁנֶּאֱמַר: יְשַׁלַּח־בָּם חֲרוֹן אַפּוֹ, עֶבְרָה וָזַעַם וְצָרָה, מִשְׁלַחַת מַלְאֲכֵי רָעִים. עֶבְרָה – אַחַת, וָזַעַם – שְׁתַּיִם, וְצָרָה – שָׁלֹשׁ, מִשְׁלַחַת מַלְאֲכֵי רָעִים – אַרְבַּע. אֱמוֹר מֵעַתָּה: בְּמִצְרַיִם לָקוּ אַרְבָּעִים מַכּוֹת וְעַל הַיָּם לָקוּ מָאתַיִם מַכּוֹת.
+\end{minipage}
+}
+\end{TriLingualStanza}
+
+\renewcommand{\EnglishContent}{%
+\begin{minipage}[t]{\linewidth}
+\textbf{How Many Plagues? — Part 2}\par\vspace{0.5em}
+Rabbi Akiva says: How can you know that each and every plague the Holy One brought upon the Egyptians in Egypt was in fact made up of five plagues? For it is said, “His fury was sent down upon them, great anger, rage, and distress, a company of messengers of destruction.” “His fury” – one, “great anger” – two, “rage” – three, “distress” – four, “a company of messengers of destruction” – five. Conclude from this that they were struck with fifty plagues in Egypt and with two hundred and fifty plagues at the sea.
+\end{minipage}
+}
+
+\renewcommand{\SpanishContent}{%
+\begin{minipage}[t]{\linewidth}
+\textbf{¿Cuántas Plagas? — Parte 2}\par\vspace{0.5em}
+Rabí Akiva dice: ¿Cómo puedes saber que cada plaga que el Santo, bendito sea, trajo sobre los egipcios en Egipto consistía en realidad en cinco plagas? Pues está dicho: “Descargó sobre ellos el ardor de Su ira, enojo, furor y aflicción, una compañía de mensajeros destructores.” “El ardor de Su ira” – una, “enojo” – dos, “furor” – tres, “aflicción” – cuatro, “una compañía de mensajeros destructores” – cinco. Concluye de esto que fueron heridos con cincuenta plagas en Egipto y con doscientas cincuenta plagas en el mar.
+\end{minipage}
+}
+
+\begin{TriLingualStanza}
+\HebrewText{%
+\begin{minipage}[t]{\linewidth}
+\textbf{כַּמָּה מַכּוֹת? — חֵלֶק שֵׁנִי}\par\vspace{0.5em}
+רַבִּי עֲקִיבָא אוֹמֵר: מִנַּיִן שֶׁכָּל־מַכָּה וּמַכָּה שֶהֵבִיא הַקָּדוֹשׁ בָּרוּךְ הוּא עַל הַמִּצְרִים בְּמִצְרַיִם הָיְתָה שֶׁל חָמֵשׁ מַכּוֹת? שֶׁנֶּאֱמַר: יְשַׁלַּח־בָּם חֲרוֹן אַפּוֹ, עֶבְרָה וָזַעַם וְצָרָה, מִשְׁלַחַת מַלְאֲכֵי רָעִים. חֲרוֹן אַפּוֹ – אַחַת, עֶבְרָה – שְׁתַּיִם, וָזַעַם – שָׁלוֹשׁ, וְצָרָה – אַרְבַּע, מִשְׁלַחַת מַלְאֲכֵי רָעִים – חָמֵשׁ. אֱמוֹר מֵעַתָּה: בְּמִצְרַיִם לָקוּ חֲמִשִּׁים מַכּוֹת וְעַל הַיָּם לָקוּ חֲמִשִּׁים וּמָאתַיִם מַכּוֹת.
+\end{minipage}
+}
+\end{TriLingualStanza}
+
+
+\renewcommand{\EnglishContent}{%
+\begin{minipage}[t]{\linewidth}
+\textbf{Dayenu – Part 1}\par\vspace{0.5em}
+How much good, layer upon layer, the Omnipresent has done for us!\par\vspace{0.5em}
+(1) Had He brought us out of Egypt without bringing judgment upon our oppressors — \textbf{Dayenu}.\par
+(2) Had He brought judgment upon them but not upon their gods — \textbf{Dayenu}.\par
+(3) Had He brought judgment upon their gods without killing their firstborn sons — \textbf{Dayenu}.\par
+(4) Had He killed their firstborn sons without giving us their wealth — \textbf{Dayenu}.\par
+(5) Had He given us their wealth without splitting the sea for us — \textbf{Dayenu}.\par
+(6) Had He split the sea for us but not brought us through it dry — \textbf{Dayenu}.\par
+(7) Had He brought us through the sea dry without drowning our enemies in it — \textbf{Dayenu}.
+\end{minipage}
+}
+
+\renewcommand{\SpanishContent}{%
+\begin{minipage}[t]{\linewidth}
+\textbf{Dayenu – Parte 1}\par\vspace{0.5em}
+¡Cuántas bondades ha hecho por nosotros el Omnipresente!\par\vspace{0.5em}
+(1) Si nos hubiera sacado de Egipto sin haber hecho justicia sobre nuestros opresores — \textbf{Dayenu}.\par
+(2) Si hubiera hecho justicia sobre ellos pero no sobre sus dioses — \textbf{Dayenu}.\par
+(3) Si hubiera hecho justicia sobre sus dioses sin haber matado a sus primogénitos — \textbf{Dayenu}.\par
+(4) Si hubiera matado a sus primogénitos sin habernos dado sus riquezas — \textbf{Dayenu}.\par
+(5) Si nos hubiera dado sus riquezas sin haber abierto el mar para nosotros — \textbf{Dayenu}.\par
+(6) Si hubiera abierto el mar para nosotros sin habernos hecho pasar por él en seco — \textbf{Dayenu}.\par
+(7) Si nos hubiera hecho pasar por el mar en seco sin haber hundido a nuestros enemigos en él — \textbf{Dayenu}.
+\end{minipage}
+}
+
+\begin{TriLingualStanza}
+\HebrewText{%
+\begin{minipage}[t]{\linewidth}
+\textbf{דַּיֵּנוּ — חֵלֶק רִאשׁוֹן}\par\vspace{0.5em}
+כַּמָּה מַעֲלוֹת טוֹבוֹת לַמָּקוֹם עָלֵינוּ!\par
+(1) אִלּוּ הוֹצִיאָנוּ מִמִּצְרַיִם וְלֹא עָשָׂה בָהֶם שְׁפָטִים — \textbf{דַּיֵּנוּ}.\par
+(2) אִלּוּ עָשָׂה בָהֶם שְׁפָטִים, וְלֹא עָשָׂה בֵאלֹהֵיהֶם — \textbf{דַּיֵּנוּ}.\par
+(3) אִלּוּ עָשָׂה בֵאלֹהֵיהֶם, וְלֹא הָרַג אֶת־בְּכוֹרֵיהֶם — \textbf{דַּיֵּנוּ}.\par
+(4) אִלּוּ הָרַג אֶת־בְּכוֹרֵיהֶם וְלֹא נָתַן לָנוּ אֶת־מָמוֹנָם — \textbf{דַּיֵּנוּ}.\par
+(5) אִלּוּ נָתַן לָנוּ אֶת־מָמוֹנָם וְלֹא קָרַע לָנוּ אֶת־הַיָּם — \textbf{דַּיֵּנוּ}.\par
+(6) אִלּוּ קָרַע לָנוּ אֶת־הַיָּם וְלֹא הֶעֱבִירָנוּ בְתוֹכוֹ בֶּחָרָבָה — \textbf{דַּיֵּנוּ}.\par
+(7) אִלּוּ הֶעֱבִירָנוּ בְתוֹכוֹ בֶּחָרָבָה וְלֹא שִׁקַּע צָרֵנוּ בְתוֹכוֹ — \textbf{דַּיֵּנוּ}.
+\end{minipage}
+}
+\end{TriLingualStanza}
+
+\renewcommand{\EnglishContent}{%
+\begin{minipage}[t]{\linewidth}
+\textbf{Dayenu – Part 2}\par\vspace{0.5em}
+(8) Had He drowned our enemies in it without providing for our needs for forty years in the desert — \textbf{Dayenu}.\par
+(9) Had He provided for our needs in the desert without feeding us with manna — \textbf{Dayenu}.\par
+(10) Had He fed us with manna without giving us Shabbat — \textbf{Dayenu}.\par
+(11) Had He given us Shabbat without drawing us close around Mount Sinai — \textbf{Dayenu}.\par
+(12) Had He drawn us close around Mount Sinai without giving us the Torah — \textbf{Dayenu}.\par
+(13) Had He given us the Torah without bringing us to the land of Israel — \textbf{Dayenu}.\par
+(14) Had He brought us to the land of Israel without building for us the House He chose — \textbf{Dayenu}.
+\end{minipage}
+}
+
+\renewcommand{\SpanishContent}{%
+\begin{minipage}[t]{\linewidth}
+\textbf{Dayenu – Parte 2}\par\vspace{0.5em}
+(8) Si hubiera hundido a nuestros enemigos sin habernos provisto durante cuarenta años en el desierto — \textbf{Dayenu}.\par
+(9) Si nos hubiera provisto en el desierto sin habernos alimentado con el maná — \textbf{Dayenu}.\par
+(10) Si nos hubiera alimentado con el maná sin habernos dado el Shabat — \textbf{Dayenu}.\par
+(11) Si nos hubiera dado el Shabat sin habernos acercado al monte Sinaí — \textbf{Dayenu}.\par
+(12) Si nos hubiera acercado al monte Sinaí sin habernos dado la Torá — \textbf{Dayenu}.\par
+(13) Si nos hubiera dado la Torá sin habernos llevado a la tierra de Israel — \textbf{Dayenu}.\par
+(14) Si nos hubiera llevado a la tierra de Israel sin habernos construido la Casa Elegida — \textbf{Dayenu}.
+\end{minipage}
+}
+
+\begin{TriLingualStanza}
+\HebrewText{%
+\begin{minipage}[t]{\linewidth}
+\textbf{דַּיֵּנוּ — חֵלֶק שֵׁנִי}\par\vspace{0.5em}
+(8) אִלּוּ שִׁקַּע צָרֵנוּ בְתוֹכוֹ וְלֹא סִפֵּק צָרְכֵּנוּ בַּמִּדְבָּר אַרְבָּעִים שָׁנָה — \textbf{דַּיֵּנוּ}.\par
+(9) אִלּוּ סִפֵּק צָרְכֵּנוּ בַּמִּדְבָּר אַרְבָּעִים שָׁנָה וְלֹא הֶאֱכִילָנוּ אֶת־הַמָּן — \textbf{דַּיֵּנוּ}.\par
+(10) אִלּוּ הֶאֱכִילָנוּ אֶת־הַמָּן וְלֹא נָתַן לָנוּ אֶת־הַשַּׁבָּת — \textbf{דַּיֵּנוּ}.\par
+(11) אִלּוּ נָתַן לָנוּ אֶת־הַשַּׁבָּת, וְלֹא קֵרְבָנוּ לִפְנֵי הַר סִינַי — \textbf{דַּיֵּנוּ}.\par
+(12) אִלּוּ קֵרְבָנוּ לִפְנֵי הַר סִינַי, וְלֹא נָתַן לָנוּ אֶת־הַתּוֹרָה — \textbf{דַּיֵּנוּ}.\par
+(13) אִלּוּ נָתַן לָנוּ אֶת־הַתּוֹרָה וְלֹא הִכְנִיסָנוּ לְאֶרֶץ יִשְׂרָאֵל — \textbf{דַּיֵּנוּ}.\par
+(14) אִלּוּ הִכְנִיסָנוּ לְאֶרֶץ יִשְׂרָאֵל וְלֹא בָנָה לָּנוּ אֶת־בֵּית הַבְּחִירָה — \textbf{דַּיֵּנוּ}.
+\end{minipage}
+}
+\end{TriLingualStanza}
+
+\renewcommand{\EnglishContent}{%
+\begin{minipage}[t]{\linewidth}
+\textbf{How Much More So}\par\vspace{0.5em}
+\textbf{How many and manifold then, the Omnipresent’s kindnesses are to us!}\par
+For He brought us out of Egypt, and brought judgment upon our oppressors and upon their gods. He killed their firstborn sons, gave us their wealth, split the sea for us, and brought us through it on dry land. He drowned our enemies there, provided for our needs for forty years in the desert, fed us manna, gave us Shabbat, drew us close around Mount Sinai, gave us the Torah, brought us to the land of Israel, and built for us the House He chose — so we could find atonement there for all our sins.
+\end{minipage}
+}
+
+\renewcommand{\SpanishContent}{%
+\begin{minipage}[t]{\linewidth}
+\textbf{¡Cuánto Más!}\par\vspace{0.5em}
+\textbf{¡Cuántas y cuán grandes son las bondades del Omnipresente hacia nosotros!}\par
+Pues nos sacó de Egipto, hizo juicio contra nuestros opresores y contra sus dioses, mató a sus primogénitos, nos dio sus riquezas, abrió el mar para nosotros, nos hizo pasar por él en seco y hundió en él a nuestros enemigos. Proveyó nuestras necesidades durante cuarenta años en el desierto, nos alimentó con maná, nos dio el Shabat, nos acercó al monte Sinaí, nos dio la Torá, nos hizo entrar en la tierra de Israel y construyó para nosotros la Casa Elegida — para que encontremos allí expiación por todos nuestros pecados.
+\end{minipage}
+}
+
+\begin{TriLingualStanza}
+\HebrewText{%
+\begin{minipage}[t]{\linewidth}
+\textbf{עַל אַחַת כַּמָּה וְכַמָּה}\par\vspace{0.5em}
+עַל אַחַת, כַּמָּה וְכַמָּה, טוֹבָה כְפוּלָה וּמְכֻפֶּלֶת לַמָּקוֹם עָלֵינוּ:\par
+שֶׁהוֹצִיאָנוּ מִמִּצְרַיִם, וְעָשָׂה בָהֶם שְׁפָטִים, וְעָשָׂה בֵאלֹהֵיהֶם, וְהָרַג אֶת־בְּכוֹרֵיהֶם, וְנָתַן לָנוּ אֶת־מָמוֹנָם, וְקָרַע לָנוּ אֶת־הַיָּם, וְהֶעֱבִירָנוּ בְתוֹכוֹ בֶּחָרָבָה, וְשִׁקַּע צָרֵנוּ בְתוֹכוֹ, וְסִפֵּק צָרְכֵּנוּ בַּמִּדְבָּר אַרְבָּעִים שָׁנָה, וְהֶאֱכִילָנוּ אֶת־הַמָּן, וְנָתַן לָנוּ אֶת־הַשַּׁבָּת, וְקֵרְבָנוּ לִפְנֵי הַר סִינַי, וְנָתַן לָנוּ אֶת־הַתּוֹרָה, וְהִכְנִיסָנוּ לְאֶרֶץ יִשְׂרָאֵל, וּבָנָה לָּנוּ אֶת־בֵּית הַבְּחִירָה לְכַפֵּר עַל־כָּל־עֲוֹנוֹתֵינוּ.
+\end{minipage}
+}
+\end{TriLingualStanza}
+
+\renewcommand{\EnglishContent}{%
+\begin{minipage}[t]{\linewidth}
+\textbf{Rabban Gamliel’s Three Things}\par\vspace{0.5em}
+Rabban Gamliel would say: Anyone who does not say these three things on Pesaḥ has not fulfilled his obligation, and these are they: \textbf{Pesaḥ, Matza, and Bitter Herbs}.\par
+The \textbf{Pesaḥ} is what our ancestors would eat while the Temple stood: and what does it recall? It recalls the Holy One’s passing over (Pasah) the houses of our ancestors in Egypt, as it is said:\par
+“You shall say: ‘It is a Pesaḥ offering for the LORD, for He passed over the houses of the children of Israel in Egypt while He struck the Egyptians, but saved those in our homes’ – and the people bowed and prostrated themselves.”
+\end{minipage}
+}
+
+\renewcommand{\SpanishContent}{%
+\begin{minipage}[t]{\linewidth}
+\textbf{Las Tres Cosas de Rabán Gamliel}\par\vspace{0.5em}
+Rabán Gamliel decía: Todo aquel que no mencione estas tres cosas en Pésaj no ha cumplido con su deber. Y son: \textbf{Pésaj, Matzá y Hierbas Amargas}.\par
+El \textbf{Pésaj} era el sacrificio que nuestros antepasados comían cuando el Templo existía. ¿Qué significa? Conmemora que el Santo, bendito sea, pasó por alto (Pasaḥ) las casas de nuestros antepasados en Egipto, como está dicho:\par
+“Y diréis: ‘Este es el sacrificio de Pésaj para el Señor, que pasó por alto las casas de los hijos de Israel en Egipto, cuando hirió a los egipcios, y nuestras casas salvó’ – y el pueblo se inclinó y adoró.”
+\end{minipage}
+}
+
+\begin{TriLingualStanza}
+\HebrewText{%
+\begin{minipage}[t]{\linewidth}
+\textbf{שְׁלוֹשָׁה דְּבָרִים שֶׁאָמַר רַבָּן גַּמְלִיאֵל}\par\vspace{0.5em}
+רַבָּן גַּמְלִיאֵל הָיָה אוֹמֵר: כָּל שֶׁלֹּא אָמַר שְׁלֹשָׁה דְּבָרִים אֵלּוּ בַּפֶּסַח, לֹא יָצָא יְדֵי חוֹבָתוֹ, וְאֵלּוּ הֵן: פֶּסַח, מַצָּה, וּמָרוֹר.\par
+פֶּסַח שֶׁהָיוּ אֲבוֹתֵינוּ אוֹכְלִים בִּזְמַן שֶׁבֵּית הַמִּקְדָּשׁ הָיָה קַיָּם, עַל שׁוּם מָה?\par
+עַל שׁוּם שֶׁפָּסַח הַקָּדוֹשׁ בָּרוּךְ הוּא עַל בָּתֵּי אֲבוֹתֵינוּ בְּמִצְרַיִם, שֶׁנֶּאֱמַר: וַאֲמַרְתֶּם זֶבַח־פֶּסַח הוּא לַייָ, אֲשֶׁר פָּסַח עַל־בָּתֵּי בְּנֵי־יִשְׂרָאֵל בְּמִצְרַיִם בְּנָגְפּוֹ אֶת־מִצְרַיִם, וְאֶת־בָּתֵּינוּ הִצִּיל, וַיִּקֹּד הָעָם וַיִּשְׁתַּחֲווּ.
+\end{minipage}
+}
+\end{TriLingualStanza}
+
+\renewcommand{\EnglishContent}{%
+\begin{minipage}[t]{\linewidth}
+\textbf{Matza and Maror}\par\vspace{0.5em}
+The matzot are now lifted:\par
+\textbf{This matza that we eat—what does it recall?} It recalls the dough of our ancestors, which did not have time to rise before the King, King of kings, the Holy One, blessed be He, revealed Himself and redeemed them, as it is said: “They baked the dough that they had brought out of Egypt into unleavened cakes, for it had not risen, for they were cast out of Egypt and could not delay, and they made no provision for the way.”\par\vspace{1em}
+
+The bitter herbs are now lifted:\par
+\textbf{These bitter herbs that we eat—what do they recall?} They recall the bitterness that the Egyptians imposed on the lives of our ancestors in Egypt, as it is said: “They embittered their lives with hard labor, with clay and with bricks and with all field labors, with all the work with which they enslaved them – hard labor.”
+\end{minipage}
+}
+
+\renewcommand{\SpanishContent}{%
+\begin{minipage}[t]{\linewidth}
+\textbf{Matzá y Maror}\par\vspace{0.5em}
+Se levantan las matzot:\par
+\textbf{¿Qué recuerda esta matzá que comemos?} Recuerda la masa de nuestros antepasados, que no tuvo tiempo de fermentar antes de que el Rey, Rey de reyes, el Santo, bendito sea, se revelara y los redimiera, como está dicho: “Y hornearon la masa que sacaron de Egipto en tortas sin levadura, porque no había fermentado, pues fueron expulsados de Egipto y no pudieron demorarse, y tampoco habían preparado provisiones.”\par\vspace{1em}
+
+Se levantan las hierbas amargas:\par
+\textbf{¿Qué recuerdan estas hierbas amargas que comemos?} Recuerdan la amargura que los egipcios impusieron a la vida de nuestros antepasados en Egipto, como está dicho: “Amargaron su vida con dura servidumbre, con barro y ladrillos y con todo tipo de trabajo en el campo, todo el trabajo que los forzaban a hacer con crueldad.”
+\end{minipage}
+}
+
+\begin{TriLingualStanza}
+\HebrewText{%
+\begin{minipage}[t]{\linewidth}
+\textbf{מַצָּה וּמָרוֹר}\par\vspace{0.5em}
+אוֹחֵז הַמַּצָּה בְּיָדוֹ וּמַרְאֶה אוֹתָהּ לַמְּסוּבִין:\par
+מַצָּה זוֹ שֶׁאָנוּ אוֹכְלִים, עַל שׁוּם מָה?\par
+עַל שׁוּם שֶׁלֹּא הִסְפִּיק בְּצֵקָם שֶׁל אֲבוֹתֵינוּ לְהַחֲמִיץ עַד שֶׁנִּגְלָה עֲלֵיהֶם מֶלֶךְ מַלְכֵי הַמְּלָכִים, הַקָּדוֹשׁ בָּרוּךְ הוּא, וּגְאָלָם, שֶׁנֶּאֱמַר:\par
+וַיֹּאפוּ אֶת־הַבָּצֵק אֲשֶׁר הוֹצִיאוּ מִמִּצְרַיִם עֻגֹת מַצּוֹת, כִּי לֹא חָמֵץ, כִּי גֹרְשׁוּ מִמִּצְרַיִם וְלֹא יָכְלוּ לְהִתְמַהְמֵהַּ, וְגַם־צֵדָה לֹא־עָשׂוּ לָהֶם.\par\vspace{1em}
+אוֹחֵז הַמָּרוֹר בְּיָדוֹ וּמַרְאֶה אוֹתוֹ לַמְּסוּבִין:\par
+מָרוֹר זֶה שֶׁאָנוּ אוֹכְלִים, עַל שׁוּם מָה?\par
+עַל שׁוּם שֶׁמֵּרְרוּ הַמִּצְרִים אֶת־חַיֵּי אֲבוֹתֵינוּ בְּמִצְרַיִם, שֶׁנֶּאֱמַר:\par
+וַיְמָרְרוּ אֶת־חַיֵּיהֶם בַּעֲבֹדָה קָשָה, בְּחֹמֶר וּבִלְבֵנִים וּבְכָל־עֲבֹדָה בַּשָּׂדֶה אֵת כָּל־עֲבֹדָתָם אֲשֶׁר־עָבְדוּ בָהֶם בְּפָרֶךְ.
+\end{minipage}
+}
+\end{TriLingualStanza}
+
+\renewcommand{\EnglishContent}{%
+\begin{minipage}[t]{\linewidth}
+\textbf{Seeing Ourselves}\par\vspace{0.5em}
+\textbf{Generation by generation}, each person must see himself as if he himself had come out of Egypt, as it is said: “And you shall tell your child on that day, ‘Because of this the LORD acted for me when I came out of Egypt.’”\par
+It was not only our ancestors whom the Holy One redeemed; He redeemed us too along with them, as it is said: “He took us out of there, to bring us to the land He promised our ancestors and to give it to us.”
+\end{minipage}
+}
+
+\renewcommand{\SpanishContent}{%
+\begin{minipage}[t]{\linewidth}
+\textbf{Verse a Uno Mismo}\par\vspace{0.5em}
+\textbf{En cada generación}, cada persona debe verse a sí misma como si ella misma hubiera salido de Egipto, como está dicho: “Y contarás a tu hijo en ese día: ‘Por esto actuó el Eterno para mí cuando salí de Egipto.’”\par
+No solo a nuestros antepasados redimió el Santo, bendito sea, sino que también a nosotros nos redimió junto con ellos, como está dicho: “Y nos sacó de allí, para llevarnos a la tierra que prometió a nuestros antepasados y dárnosla.”
+\end{minipage}
+}
+
+\begin{TriLingualStanza}
+\HebrewText{%
+\begin{minipage}[t]{\linewidth}
+\textbf{בְּכָל דּוֹר וָדוֹר}\par\vspace{0.5em}
+בְּכָל־דּוֹר וָדוֹר חַיָּב אָדָם לִרְאוֹת אֶת־עַצְמוֹ כְּאִלּוּ הוּא יָצָא מִמִּצְרַיִם, שֶׁנֶּאֱמַר:\par
+וְהִגַּדְתָּ לְבִנְךָ בַּיּוֹם הַהוּא לֵאמֹר, בַּעֲבוּר זֶה עָשָׂה יְיָ לִי בְּצֵאתִי מִמִּצְרַיִם.\par
+לֹא אֶת־אֲבוֹתֵינוּ בִּלְבַד גָּאַל הַקָּדוֹשׁ בָּרוּךְ הוּא, אֶלָּא אַף אוֹתָנוּ גָּאַל עִמָּהֶם, שֶׁנֶּאֱמַר:\par
+וְאוֹתָנוּ הוֹצִיא מִשָּׁם, לְמַעַן הָבִיא אוֹתָנוּ, לָתֵת לָנוּ אֶת־הָאָרֶץ אֲשֶׁר נִשְׁבַּע לַאֲבֹתֵינוּ.
+\end{minipage}
+}
+\end{TriLingualStanza}
+
+\renewcommand{\EnglishContent}{%
+\begin{minipage}[t]{\linewidth}
+\textbf{First Half of Hallel}\par\vspace{0.5em}
+The matzot are covered and the cup is raised: \textbf{Therefore} it is our duty to thank, praise, laud, glorify, exalt, honor, bless, raise high, and acclaim the One who has performed all these miracles for our ancestors and for us; who has brought us out from slavery to freedom, from sorrow to joy, from grief to celebration, from darkness to great light and from enslavement to redemption; and so we shall sing a new song before Him — \textbf{HALLELUYA!}\par\vspace{1em}
+The cup is put down. \textbf{Halleluya!} Servants of the LORD, give praise; praise the name of the LORD. Blessed be the name of the LORD now and for evermore. From the rising of the sun to its setting, may the LORD’S name be praised. High is the LORD above all nations; His glory is above the heavens. Who is like the LORD our God, who sits enthroned so high, yet turns so low to see the heavens and the earth? He raises the poor from the dust and the needy from the refuse heap, giving them a place alongside princes, the princes of His people. He makes the woman in a childless house a happy mother of children — \textbf{HALLELUYA!}
+\end{minipage}
+}
+
+\renewcommand{\SpanishContent}{%
+\begin{minipage}[t]{\linewidth}
+\textbf{Primera Parte del Halel}\par\vspace{0.5em}
+Se cubren las matzot y se alza la copa: \textbf{Por tanto,} estamos obligados a agradecer, alabar, ensalzar, glorificar, exaltar, honrar, bendecir, elevar y aclamar a Aquel que hizo todos estos milagros por nuestros antepasados y por nosotros; que nos sacó de la esclavitud a la libertad, del dolor a la alegría, del duelo a la festividad, de la oscuridad a una gran luz y de la servidumbre a la redención; y por ello, entonaremos un canto nuevo ante Él — \textbf{¡HALLELUYA!}\par\vspace{1em}
+Se baja la copa. \textbf{¡Haleluyá!} Siervos del Eterno, alaben; alaben el nombre del Eterno. Bendito sea el nombre del Eterno desde ahora y para siempre. Desde la salida del sol hasta su ocaso, sea alabado el nombre del Eterno. El Eterno está por encima de todas las naciones, Su gloria está por encima de los cielos. ¿Quién como el Eterno nuestro Dios, que se sienta en lo alto, que se inclina para mirar los cielos y la tierra? Él levanta al pobre del polvo y al necesitado de la basura, para sentarlos con los nobles, con los nobles de Su pueblo. Él convierte a la mujer estéril del hogar en madre alegre de hijos — \textbf{¡HALLELUYA!}
+\end{minipage}
+}
+
+\begin{TriLingualStanza}
+\HebrewText{%
+\begin{minipage}[t]{\linewidth}
+\textbf{הַלֵּל רִאשׁוֹן}\par\vspace{0.5em}
+יֹאחֵז הַכּוֹס בְּיָדוֹ וִיכַסֵּה הַמַּצּוֹת וְיֹאמַר:\par
+לְפִיכָךְ אֲנַחְנוּ חַיָּבִים לְהוֹדוֹת, לְהַלֵּל, לְשַׁבֵּחַ, לְפָאֵר, לְרוֹמֵם, לְהַדֵּר, לְבָרֵךְ, לְעַלֵּה, וּלְקַלֵּס לְמִי שֶׁעָשָׂה לַאֲבוֹתֵינוּ וְלָנוּ אֶת־כָּל־הַנִסִּים הָאֵלּוּ: הוֹצִיאָנוּ מֵעַבְדוּת לְחֵרוּת, מִיָּגוֹן לְשִׂמְחָה, וּמֵאֵבֶל לְיוֹם טוֹב, וּמֵאֲפֵלָה לְאוֹר גָּדוֹל, וּמִשִּׁעְבּוּד לִגְאֻלָּה. וְנֹאמַר לְפָנָיו שִׁירָה חֲדָשָׁה — \textbf{הַלְלוּ יָהּ!}\par\vspace{1em}
+הַכּוֹס נִנָּחַת. הַלְלוּ יָהּ הַלְלוּ עַבְדֵי יְיָ, הַלְלוּ אֶת־שֵׁם יְיָ. יְהִי שֵׁם יְיָ מְבֹרָךְ מֵעַתָּה וְעַד־עוֹלָם. מִמִּזְרַח־שֶׁמֶשׁ עַד־מְבוֹאוֹ מְהֻלָּל שֵׁם יְיָ. רָם עַל־כָּל־גּוֹיִם יְיָ, עַל הַשָּׁמַיִם כְּבוֹדוֹ. מִי כַּייָ אֱלֹהֵינוּ הַמַּגְבִּיהִי לָשָׁבֶת, הַמַּשְׁפִּילִי לִרְאוֹת בַּשָּׁמַיִם וּבָאָרֶץ. מְקִימִי מֵעָפָר דָּל, מֵאַשְׁפֹּת יָרִים אֶבְיוֹן. לְהוֹשִׁיבִי עִם־נְדִיבִים, עִם נְדִיבֵי עַמּוֹ. מוֹשִׁיבִי עֲקֶרֶת הַבַּיִת, אֵם־הַבָּנִים שְׂמֵחָה — \textbf{הַלְלוּ־יָהּ!}
+\end{minipage}
+}
+\end{TriLingualStanza}
+
+
+\renewcommand{\EnglishContent}{%
+\begin{minipage}[t]{\linewidth}
+\textbf{When Israel Came Out of Egypt}\par\vspace{0.5em}
+When Israel came out of Egypt,\\
+the house of Jacob from a people of foreign tongue,\\
+Judah became His sanctuary,\\
+Israel His dominion.\\
+The sea saw and fled;\\
+the Jordan turned back.\\
+The mountains skipped like rams,\\
+the hills like lambs.\\
+Why was it, sea, that you fled?\\
+Jordan, why did you turn back?\\
+Why, mountains, did you skip like rams,\\
+and you, hills, like lambs?\\
+It was at the presence of the LORD,\\
+Creator of the earth,\\
+at the presence of the God of Jacob,\\
+who turned the rock into a pool of water,\\
+flint into a flowing spring.
+\end{minipage}
+}
+
+\renewcommand{\SpanishContent}{%
+\begin{minipage}[t]{\linewidth}
+\textbf{Cuando Israel Salió de Egipto}\par\vspace{0.5em}
+Cuando Israel salió de Egipto,\\
+la casa de Jacob de un pueblo de lengua extraña,\\
+Judá fue su santuario,\\
+Israel su dominio.\\
+El mar lo vio y huyó;\\
+el Jordán retrocedió.\\
+Las montañas saltaron como carneros,\\
+las colinas como corderitos.\\
+¿Qué te pasa, mar, que huyes?\\
+¿Y a ti, Jordán, que retrocedes?\\
+¿Montañas, por qué saltan como carneros,\\
+y colinas como corderitos?\\
+Ante la presencia del Señor tiembla la tierra,\\
+ante la presencia del Dios de Jacob,\\
+que convirtió la roca en estanque de aguas,\\
+el pedernal en manantial de aguas.
+\end{minipage}
+}
+
+\begin{TriLingualStanza}
+\HebrewText{%
+\begin{minipage}[t]{\linewidth}
+\textbf{בְּצֵאת יִשְׂרָאֵל מִמִּצְרָיִם}\par\vspace{0.5em}
+בְּצֵאת יִשְׂרָאֵל מִמִּצְרַיִם,\\
+בֵּית יַעֲקֹב מֵעַם לֹעֵז.\\
+הָיְתָה יְהוּדָה לְקָדְשׁוֹ,\\
+יִשְׂרָאֵל מַמְשְׁלוֹתָיו.\\
+הַיָּם רָאָה וַיָּנֹס,\\
+הַיַּרְדֵּן יִסֹּב לְאָחוֹר.\\
+הֶהָרִים רָקְדוּ כְאֵילִים,\\
+גְּבָעוֹת כִּבְנֵי צֹאן.\\
+מַה־לְּךָ הַיָּם כִּי תָנוּס,\\
+הַיַּרְדֵּן – תִּסֹּב לְאָחוֹר.\\
+הֶהָרִים – תִּרְקְדוּ כְאֵילִים,\\
+גְּבָעוֹת כִּבְנֵי־צֹאן.\\
+מִלְּפְנֵי אָדוֹן חוּלִי אָרֶץ,\\
+מִלְּפְנֵי אֱלוֹהַּ יַעֲקֹב.\\
+הַהֹפְכִי הַצּוּר אֲגַם־מָיִם,\\
+חַלָּמִיש לְמַעְיְנוֹ־מָיִם.
+\end{minipage}
+}
+\end{TriLingualStanza}
+
+
+\renewcommand{\EnglishContent}{%
+\begin{minipage}[t]{\linewidth}
+\textbf{Second Cup of Wine}\par\vspace{0.5em}
+The cup is raised.\\
+Blessed are You, LORD our God, King of the Universe,\\
+who has redeemed us and redeemed our ancestors from Egypt,\\
+and brought us to this night to eat matza and bitter herbs.\\
+So may the LORD our God bring us in peace\\
+to other seasons and festivals that are coming to us,\\
+happy in the building of Your city\\
+and rejoicing in Your service.\\
+And there we shall eat of sacrifices and Pesaḥ offerings\\
+(of which the blood will reach the side of Your altar to be accepted),\\
+and we shall thank You in a new song\\
+for our redemption and for our lives’ salvation.\\
+Blessed are You, LORD, Redeemer of Israel.\\
+Drink the cup while reclining to the left.\\
+Blessed are You, LORD our God, King of the Universe,\\
+who creates the fruit of the vine.
+\end{minipage}
+}
+
+\renewcommand{\SpanishContent}{%
+\begin{minipage}[t]{\linewidth}
+\textbf{Segunda Copa de Vino}\par\vspace{0.5em}
+Se alza la copa.\\
+Bendito eres Tú, Adonay, nuestro Dios, Rey del universo,\\
+que nos redimiste a nosotros y a nuestros antepasados de Egipto,\\
+y nos has hecho llegar a esta noche para comer matzá y maror.\\
+Así, que el Eterno, nuestro Dios, nos haga llegar en paz\\
+a otros tiempos y festivales que se acercan a nosotros,\\
+alegres por la reconstrucción de Tu ciudad\\
+y gozosos en Tu servicio.\\
+Y allí comeremos de los sacrificios y de las ofrendas de Pésaj\\
+(cuya sangre llegará a la pared de Tu altar para aceptación),\\
+y Te agradeceremos con un canto nuevo\\
+por nuestra redención y la salvación de nuestras almas.\\
+Bendito eres Tú, Adonay, que redimes a Israel.\\
+Se bebe la copa recostándose hacia la izquierda.\\
+Bendito eres Tú, Adonay, nuestro Dios, Rey del universo,\\
+que creas el fruto de la vid.
+\end{minipage}
+}
+
+\begin{TriLingualStanza}
+\HebrewText{%
+\begin{minipage}[t]{\linewidth}
+\textbf{הַכּוֹס הַשֵּׁנִי}\par\vspace{0.5em}
+מַגְבִּיהִים אֶת הַכּוֹס עַד גָּאַל יִשְׂרָאֵל.\\
+בָּרוּךְ אַתָּה יְיָ אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם,\\
+אֲשֶׁר גְּאָלָנוּ וְגָאַל אֶת־אֲבוֹתֵינוּ מִמִּצְרַיִם,\\
+וְהִגִּיעָנוּ הַלַּיְלָה הַזֶּה לֶאֱכָל בּוֹ מַצָּה וּמָרוֹר.\\
+כֵּן יְיָ אֱלֹהֵינוּ וֵאלֹהֵי אֲבוֹתֵינוּ יַגִּיעֵנוּ לְמוֹעֲדִים וְלִרְגָלִים אֲחֵרִים,\\
+הַבָּאִים לִקְרָאתֵנוּ לְשָׁלוֹם,\\
+שְׂמֵחִים בְּבִנְיַן עִירֶךָ, וְשָׂשִׂים בַּעֲבוֹדָתֶךָ.\\
+וְנֹאכַל שָׁם מִן הַזְּבָחִים וּמִן הַפְּסָחִים,\\
+אֲשֶׁר יַגִּיעַ דָּמָם עַל קִיר מִזְבַּחֲךָ לְרָצוֹן,\\
+וְנוֹדֶה לְךָ שִׁיר חָדָשׁ עַל גְּאֻלָּתֵנוּ\\
+וְעַל פְּדוּת נַפְשֵׁנוּ.\\
+בָּרוּךְ אַתָּה יְיָ, גָּאַל יִשְׂרָאֵל.\par
+שׁוֹתִים אֶת הַכּוֹס בְּהַסֵּבַת שְׂמֹאל.\\
+בָּרוּךְ אַתָּה יְיָ, אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם, בּוֹרֵא פְּרִי הַגָּפֶן.
+\end{minipage}
+}
+\end{TriLingualStanza}
+
+\renewcommand{\EnglishContent}{%
+\begin{minipage}[t]{\linewidth}
+\textbf{Raḥtza and Motzi Matza}\par\vspace{0.5em}
+\textbf{Raḥtza / Washing}\par
+In preparation for the meal, all participants wash their hands and recite the blessing:\par
+\textbf{Blessed are You, LORD our God, King of the Universe,\\
+who has made us holy through His commandments,\\
+and has commanded us about washing hands.}\par\vspace{1em}
+
+\textbf{Motzi Matza}\par
+The leader holds all three matzot — the broken piece between the two whole ones — and recites the blessing \textit{hamotzi} with the upper one in mind, and the blessing \textit{al akhilat matza} with the broken one in mind. Then he breaks a kezayit (olive-sized portion) from the upper whole matza and a second kezayit from the broken piece, dips them in salt, and eats them, reclining to the left.\par
+\textbf{Blessed are You, LORD our God, King of the Universe,\\
+who brings forth bread from the earth.}\par
+\textbf{Blessed are You, LORD our God, King of the Universe,\\
+who has made us holy through His commandments,\\
+and has commanded us to eat matza.}
+\end{minipage}
+}
+
+\renewcommand{\SpanishContent}{%
+\begin{minipage}[t]{\linewidth}
+\textbf{Raḥtzá y Motzí Matzá}\par\vspace{0.5em}
+\textbf{Raḥtzá / Lavado}\par
+En preparación para la comida, todos los participantes se lavan las manos y recitan la bendición:\par
+\textbf{Bendito eres Tú, Adonay, nuestro Dios, Rey del universo,\\
+que nos has santificado con Tus mandamientos\\
+y nos has ordenado el lavado de las manos.}\par\vspace{1em}
+
+\textbf{Motzí Matzá}\par
+El oficiante sostiene las tres matzot — la partida entre las dos completas — y recita la bendición \textit{hamotzí} con intención sobre la superior, y la bendición \textit{al ajilat matzá} con intención sobre la partida. Luego parte un kazait (porción del tamaño de una aceituna) de la matzá superior y otro de la partida, los sumerge en sal y los come recostado hacia la izquierda.\par
+\textbf{Bendito eres Tú, Adonay, nuestro Dios, Rey del universo,\\
+que haces salir el pan de la tierra.}\par
+\textbf{Bendito eres Tú, Adonay, nuestro Dios, Rey del universo,\\
+que nos has santificado con Tus mandamientos\\
+y nos has ordenado comer matzá.}
+\end{minipage}
+}
+
+\begin{TriLingualStanza}
+\HebrewText{%
+\begin{minipage}[t]{\linewidth}
+\textbf{רָחְצָה וּמוֹצִיא מַצָּה}\par\vspace{0.5em}
+נוטלים את הידים ומברכים:\par
+בָּרוּךְ אַתָּה יְיָ, אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם,\\
+אֲשֶׁר קִדְּשָׁנוּ בְּמִצְוֹתָיו\\
+וְצִוָּנוּ עַל נְטִילַת יָדַיִם.\par\vspace{1em}
+
+יקח המצות בסדר שהניחן, הפרוסה בין שתי השלמות, יאחז שלשתן בידו ויברך "המוציא" בכוונה עַל העליונה, ו"על אכילת מַצָּה" בכוונה על הפרוסה. אחר כך יבצע כזית מן העליונה השלמה וכזית שני מן הפרוסה, ויטבלם במלח, ויאכל בהסבה שני הזיתים:\par
+בָּרוּךְ אַתָּה יְיָ, אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם,\\
+הַמּוֹצִיא לֶחֶם מִן הָאָרֶץ.\par
+בָּרוּךְ אַתָּה יְיָ, אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם,\\
+אֲשֶׁר קִדְּשָׁנוּ בְּמִצְוֹתָיו\\
+וְצִוָּנוּ עַל אֲכִילַת מַצָּה.
+\end{minipage}
+}
+\end{TriLingualStanza}
+
+\renewcommand{\EnglishContent}{%
+\begin{minipage}[t]{\linewidth}
+\textbf{Maror, Korekh, and Shulḥan Orekh}\par\vspace{0.5em}
+\textbf{Maror / Bitter Herbs}\par
+The maror is dipped in the haroset before it is eaten. Each participant takes a kezayit of bitter herbs, dips it in haroset, shakes off the excess, recites the blessing, and eats it — not reclining.\par
+\textbf{Blessed are You, LORD our God, King of the Universe,\\
+who has made us holy through His commandments,\\
+and has commanded us to eat bitter herbs.}\par\vspace{1em}
+
+\textbf{Korekh / Wrapping}\par
+Bitter herbs are sandwiched between two pieces of matza taken from the lowermost matza. Each participant takes a kezayit of the third matza with a kezayit of maror, wraps them together, and eats while reclining to the left — without a blessing.\par
+\textbf{In memory of the Temple, in the tradition of Hillel.}\\
+This is what Hillel would do when the Temple still stood:\\
+He would wrap matza and maror together and eat them,\\
+to fulfill what is said:\\
+“You shall eat it with matza and bitter herbs.”\par\vspace{1em}
+
+\textbf{Shulḥan Orekh / Table Setting}\par
+The festive meal is now eaten.
+\end{minipage}
+}
+
+\renewcommand{\SpanishContent}{%
+\begin{minipage}[t]{\linewidth}
+\textbf{Maror, Korej y Shulján Orej}\par\vspace{0.5em}
+\textbf{Maror / Hierbas Amargas}\par
+El maror se sumerge en el jaroset antes de comerlo. Cada participante toma un kazait de hierbas amargas, lo sumerge en jaroset, sacude el exceso, dice la bendición y lo come — sin recostarse.\par
+\textbf{Bendito eres Tú, Adonay, nuestro Dios, Rey del universo,\\
+que nos has santificado con Tus mandamientos\\
+y nos has ordenado comer hierbas amargas.}\par\vspace{1em}
+
+\textbf{Korej / Envolver}\par
+Las hierbas amargas se colocan entre dos pedazos de matzá tomados de la matzá inferior. Cada participante toma un kazait de la tercera matzá con un kazait de maror, los envuelve y los come recostado hacia la izquierda — sin bendición.\par
+\textbf{En memoria del Templo, según la tradición de Hilel.}\\
+Así hacía Hilel en tiempos del Templo:\\
+envolvía la ofrenda de Pésaj con matzá y maror,\\
+y los comía juntos para cumplir con lo dicho:\\
+“Lo comerán con matzot y hierbas amargas.”\par\vspace{1em}
+
+\textbf{Shulján Orej / Servir la Mesa}\par
+Se come la comida festiva.
+\end{minipage}
+}
+
+\begin{TriLingualStanza}
+\HebrewText{%
+\begin{minipage}[t]{\linewidth}
+\textbf{מָרוֹר, כּוֹרֵךְ וּשֻׁלְחָן עוֹרֵךְ}\par\vspace{0.5em}
+כָּל אֶחָד מִן הַמְּסֻבִּים לוֹקֵחַ כְּזַיִת מָרוֹר,\\
+מְטַבֵּלוֹ בַּחֲרוֹסֶת, מְנַעֵר הַחֲרוֹסֶת, מְבָרֵךְ וְאוֹכֵל בְּלֹא הַסֵּבָה.\par
+בָּרוּךְ אַתָּה יְיָ, אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם,\\
+אֲשֶׁר קִדְּשָׁנוּ בְּמִצְוֹתָיו\\
+וְצִוָּנוּ עַל אֲכִילַת מָרוֹר.\par\vspace{1em}
+
+כָּל אֶחָד מִן הַמְּסֻבִּים לוֹקֵחַ כְּזַיִת מִן הַמַּצָּה הַשְּׁלִישִׁית\\
+עִם כְּזַיִת מָרוֹר, כּוֹרְכִים יַחַד, אוֹכְלִים בְּהַסֵּבָה וּבְלֹא בְּרָכָה.\par
+\textbf{זֵכֶר לַמִּקְדָּשׁ כְּהִלֵּל.}\\
+כֵּן עָשָׂה הִלֵּל בִּזְמַן שֶׁבֵּית הַמִּקְדָּשׁ הָיָה קַיָּם:\\
+הָיָה כּוֹרֵךְ מַצָּה וּמָרוֹר וְאוֹכֵל בְּיַחַד,\\
+לְקַיֵּם מַה שֶּׁנֶּאֱמַר:\\
+עַל מַצּוֹת וּמְרֹרִים יֹאכְלֻהוּ.\par\vspace{1em}
+
+\textbf{שֻׁלְחָן עוֹרֵךְ}\par
+אוֹכְלִים וְשׁוֹתִים.
+\end{minipage}
+}
+\end{TriLingualStanza}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

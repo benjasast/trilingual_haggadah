@@ -1,0 +1,46 @@
+# Xetek Project .gitignore
+
+# ----------------------------
+# Build directories & artifacts
+# ----------------------------
+/build/
+/dist/
+*.o
+*.so
+*.dll
+*.exe
+
+# ----------------------------
+# Dependency directories
+# (Uncomment if using package managers)
+/node_modules/
+/vendor/
+
+# ----------------------------
+# Log files and temporary files
+# ----------------------------
+*.log
+/tmp/
+/temp/
+*.gz
+*.pdf
+*.aux
+
+# ----------------------------
+# Operating System files
+# ----------------------------
+.DS_Store
+Thumbs.db
+
+# ----------------------------
+# IDE / Editor files
+# ----------------------------
+.idea/
+.vscode/
+*.suo
+*.swp
+
+# ----------------------------
+# Environment and configuration files
+# ----------------------------
+.env
