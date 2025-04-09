@@ -44,3 +44,4 @@ Thumbs.db
 # Environment and configuration files
 # ----------------------------
 .env
+check.tex
