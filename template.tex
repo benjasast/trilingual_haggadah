@@ -1,0 +1,140 @@
+% =============== Preamble ====================
+\documentclass[12pt,twoside]{article}
+
+% For XeLaTeX font loading & multilingual support
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\setdefaultlanguage{hebrew}
+\setotherlanguage{english}
+\setotherlanguage{spanish}
+
+% Force explicit LTR/RTL using bidi
+\usepackage{bidi}
+
+% Hebrew font (ensure the font file exists at the specified path)
+\newfontfamily\hebrewfont[
+  Script=Hebrew,
+  Scale=1.2,
+  Path=C:/Users/SasTrakinskyB/Downloads/EzraSIL-2.51/EzraSIL2.51/
+]{SILEOT.ttf}
+
+% Latin font
+\setmainfont{Libre Baskerville}
+
+% Page geometry and styling
+\usepackage[inner=3cm,outer=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\cfoot{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+\usepackage{setspace}
+\setstretch{1.2}
+\usepackage{microtype}
+
+% For side-by-side columns
+\usepackage{paracol}
+
+% For conditionals in the environment
+\usepackage{etoolbox}
+\newbool{firststanza}
+\setbool{firststanza}{true}
+
+% Hebrew macro: force RTL using bidi, no indent, large font
+\newcommand{\HebrewText}[1]{%
+  \selectlanguage{hebrew}%
+  \begin{RTL}%
+    \noindent\Large #1%
+  \end{RTL}%
+}
+
+% English and Spanish content will be stored here:
+\newcommand{\EnglishContent}{} 
+\newcommand{\SpanishContent}{}
+
+% Smart TriLingualStanza environment:
+\newenvironment{TriLingualStanza}{%
+  % Start: Force Hebrew on next odd page
+  \clearpage
+  \ifbool{firststanza}{}{%
+    \cleardoublepage
+  }%
+  \setbool{firststanza}{false}
+}{%
+  % End: Move to next even page for translations
+  \clearpage
+  \setlength{\columnsep}{1.2cm}
+  \begin{paracol}{2}
+    % Left column: English; add \vspace*{0pt} to force top alignment.
+    \begin{leftcolumn}
+      \selectlanguage{english}%
+      \normalsize%
+      \noindent%
+      \vspace*{0pt}%
+      \EnglishContent
+    \end{leftcolumn}
+    \switchcolumn
+    % Right column: Spanish; also force top alignment.
+    \begin{rightcolumn}
+      \selectlanguage{spanish}%
+      \normalsize%
+      \noindent%
+      \vspace*{0pt}%
+      \SpanishContent
+    \end{rightcolumn}
+  \end{paracol}
+  \vspace{2em}%
+}
+
+% =============== Document Start ================
+\title{הגדה של פסח}
+\author{עיצוב לדוגמה}
+\date{}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+\clearpage
+
+% ---------------------------
+% EXAMPLE STANZA #1
+% ---------------------------
+\renewcommand{\EnglishContent}{%
+If He had brought us out of Egypt and had not executed judgments upon them --- \textbf{Dayenu!}\\[1em]
+If He had executed judgments upon them and not upon their gods --- \textbf{Dayenu!}\\[1em]
+If He had executed judgments on their gods and had not slain their firstborn --- \textbf{Dayenu!}
+}
+\renewcommand{\SpanishContent}{%
+Si Él nos hubiera sacado de Egipto y no hubiera ejecutado juicios contra ellos, \textbf{Dayenu!}\\[1em]
+Si Él hubiera ejecutado juicios contra ellos y no contra sus dioses, \textbf{¡Dayenu!}\\[1em]
+Si Él hubiera ejecutado juicios contra sus dioses y no hubiera matado a sus primogénitos, \textbf{¡Dayenu!}
+}
+\begin{TriLingualStanza}
+\HebrewText{%
+אִלּוּ הוֹצִיאָנוּ מִמִּצְרַיִם וְלֹא עָשָׂה בָהֶם שְׁפָטִים --- \textbf{דַּיֵּנוּ}\\[0.8em]
+אִלּוּ עָשָׂה בָהֶם שְׁפָטִים וְלֹא עָשָׂה בֵאלֹהֵיהֶם --- \textbf{דַּיֵּנוּ}\\[0.8em]
+אִלּוּ עָשָׂה בֵאלֹהֵיהֶם וְלֹא הָרַג אֶת בְּכוֹרֵיהֶם --- \textbf{דַּיֵּנוּ}
+}
+\end{TriLingualStanza}
+
+% ---------------------------
+% EXAMPLE STANZA #2
+% ---------------------------
+\renewcommand{\EnglishContent}{%
+If He had given us the Torah and not brought us into the Land of Israel --- \textbf{Dayenu!}\\[1em]
+If He had fed us the manna in the desert and not given us the Sabbath --- \textbf{Dayenu!}
+}
+\renewcommand{\SpanishContent}{%
+Si Él nos hubiera dado la Torá y no nos hubiera llevado a la Tierra de Israel, \textbf{¡Dayenu!}\\[1em]
+Si Él nos hubiera alimentado con el maná en el desierto y no nos hubiera dado el Shabat, \textbf{¡Dayenu!}
+}
+\begin{TriLingualStanza}
+\HebrewText{%
+אִלּוּ נָתַן לָנוּ אֶת הַתּוֹרָה וְלֹא הִכְנִיסָנוּ לְאֶרֶץ יִשְׂרָאֵל --- \textbf{דַּיֵּנוּ}\\[0.8em]
+אִלּוּ הִנְהִיג לָנוּ מָן בַּמִּדְבָּר וְלֹא נָתַן לָנוּ אֶת הַשַּׁבָּת --- \textbf{דַּיֵּנוּ}
+}
+\end{TriLingualStanza}
+
+\end{document}
